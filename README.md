@@ -26,10 +26,8 @@ Basta copiar a pasta `.agent/` para o seu projeto e o agente terá acesso autom�
 │   ├── devcontainer/        # Configuração de Dev Containers
 │   ├── design-patterns/     # Especialista pragmático em GoF e GRASP
 │   ├── documentador/        # Geração de docs para RAG
-│   ├── documentador_kb/     # Publicação em Base de Conhecimento
 │   ├── documentador_revisor/# Validação de docs RAG
 │   ├── go-initializer/      # Scaffolding de projetos Go
-│   ├── jenkins/             # Pipelines CI/CD Jenkins
 │   ├── jira-workflow/       # Gestão de tickets Jira
 │   ├── kubernetes/          # Manifests K8s com Kustomize
 │   └── quality/             # Regras de testes e qualidade

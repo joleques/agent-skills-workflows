@@ -24,6 +24,7 @@ Basta copiar a pasta `.agent/` para o seu projeto e o agente terá acesso autom�
 │   ├── arquitetura/         # Padrões de arquitetura limpa
 │   ├── arquitetura-revisor/ # Revisão de conformidade arquitetural
 │   ├── devcontainer/        # Configuração de Dev Containers
+│   ├── design-patterns/     # Especialista pragmático em GoF e GRASP
 │   ├── documentador/        # Geração de docs para RAG
 │   ├── documentador_kb/     # Publicação em Base de Conhecimento
 │   ├── documentador_revisor/# Validação de docs RAG
@@ -129,6 +130,21 @@ Gera o scaffolding de um projeto Go funcional com:
 - `go.mod` configurado com o nome do módulo
 - `src/main.go` com ponto de entrada
 - `Makefile` com targets: `run`, `build`, `test`, `clean`, `tidy`
+
+---
+
+### 🎯 Design Patterns
+
+| | |
+|---|---|
+| **Skill** | `design-patterns-specialist` |
+| **Descrição** | Especialista pragmático em GoF e GRASP — sabe quando usar e quando NÃO usar patterns |
+
+Analisa e recomenda Design Patterns com foco em **simplicidade primeiro**:
+- Tabelas de decisão para todos os patterns GoF (Creational, Structural, Behavioral)
+- Princípios GRASP com aplicação pragmática
+- Sinais de alerta contra over-engineering (YAGNI, KISS, Regra dos 3)
+- Fluxo de validação: só aplica pattern se houver problema concreto em 3+ locais
 
 ---
 

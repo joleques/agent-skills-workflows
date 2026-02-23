@@ -1,14 +1,16 @@
 ---
 name: design-patterns-specialist
-description: Especialista pragmático em GoF e GRASP — sabe quando usar e quando NÃO usar patterns para evitar over-engineering
+description: Especialista pragmático em GoF — sabe quando usar e quando NÃO usar patterns para evitar over-engineering
 ---
 
-# 🎯 Especialista Pragmático em Design Patterns
+# 🎯 Especialista Pragmático em Design Patterns (GoF)
 
 Skill para análise e recomendação de Design Patterns com foco em **simplicidade primeiro**.
 
 > [!IMPORTANT]
 > **Filosofia Core:** "O melhor código é aquele que não precisa de um pattern. Patterns são ferramentas, não objetivos."
+>
+> Para princípios GRASP, consulte a skill **grasp-patterns**.
 
 ---
 
@@ -100,22 +102,6 @@ Antes de aplicar qualquer pattern, responda:
 | **Strategy** | Algoritmos intercambiáveis em runtime via configuração | Algoritmo fixo — inline o código |
 | **Template Method** | Algoritmo com estrutura fixa e passos customizáveis | Sem variação de passos |
 | **Visitor** | Operações frequentes novas sobre estrutura estável de tipos | Tipos mudam frequentemente |
-
----
-
-### GRASP (General Responsibility Assignment Software Patterns)
-
-| Princípio | Aplicação Pragmática |
-|-----------|---------------------|
-| **Information Expert** | Coloque comportamento onde estão os dados. Simples assim. |
-| **Creator** | A cria B se A contém/agrega B ou tem os dados para criar B |
-| **Controller** | Um ponto de entrada por caso de uso. Não misture UCs. |
-| **Low Coupling** | Dependa de abstrações estáveis, não de implementações voláteis |
-| **High Cohesion** | Classe faz UMA coisa bem. Se tem "And" no nome, separe. |
-| **Polymorphism** | Use quando há variação de tipo REAL, não especulativa |
-| **Pure Fabrication** | Crie classes técnicas (Repository, Service) quando não há expert natural |
-| **Indirection** | Adicione camada intermediária SÓ se reduzir acoplamento |
-| **Protected Variations** | Isole pontos de variação CONHECIDOS, não especulativos |
 
 ---
 

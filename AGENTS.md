@@ -17,10 +17,14 @@ Idioma: Português (Logs em Inglês).
 
 Este agente possui habilidades especializadas em:
 
-* `arquitetura-proposta`: Regras de estrutura de pastas (domain, use_case, infra) e fluxo de dependências — Clean Architecture + Hexagonal + DDD.
-* `arquitetura-revisor`: Revisão de código e conformidade arquitetural ao padrão proposta-arq. Gera relatório de violações.
-* `design-patterns-specialist`: Especialista pragmático em GoF e GRASP — sabe quando usar e quando NÃO usar patterns para evitar over-engineering.
-* `quality-assurance`: Regras para TDD, cobertura de testes, mocks obrigatórios e validação de código.
+* `arquitetura-proposta`: Para design de software e camadas.
+* `arquitetura-revisor`: Para revisão de código e conformidade arquitetural.
+* `design-patterns-specialist`: Para uso pragmático de GoF — sabe quando usar e quando NÃO usar.
+* `software-principles`: SOLID, princípios OO (Demeter, Tell Don't Ask) e pragmáticos (DRY, KISS, YAGNI).
+* `grasp-patterns`: 9 padrões GRASP de atribuição de responsabilidade.
+* `package-principles`: 6 princípios de pacotes de Robert C. Martin (REP, CCP, CRP, ADP, SDP, SAP).
+* `architectural-principles`: Princípios arquiteturais (SoC, Dependency Rule, Hexagonal, Bounded Context, Hollywood, Convention over Config).
+* `quality-assurance`: Para padrões de testes e mocks.
 
 ## ✅ Checklist Pós-Implementação
 

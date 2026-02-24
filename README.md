@@ -34,7 +34,8 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 │   ├── kubernetes/                # Manifests K8s com Kustomize
 │   ├── package-principles/        # Princípios de pacotes
 │   ├── quality/                   # Regras de testes e qualidade
-│   └── software-principles/       # Princípios SOLID, OO, Pragmáticos
+│   ├── software-principles/       # Princípios SOLID, OO, Pragmáticos
+│   └── software-principles-revisor/ # Revisão de aderência a princípios de software
 └── workflows/                   # Orquestrações multi-skill
     ├── hermes.md                  # Pipeline de documentação RAG
     └── init-project.md            # Inicialização completa de projetos

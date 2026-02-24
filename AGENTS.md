@@ -21,6 +21,7 @@ Este agente possui habilidades especializadas em:
 * `arquitetura-revisor`: Para revisão de código e conformidade arquitetural.
 * `design-patterns-specialist`: Para uso pragmático de GoF — sabe quando usar e quando NÃO usar.
 * `software-principles`: SOLID, princípios OO (Demeter, Tell Don't Ask) e pragmáticos (DRY, KISS, YAGNI).
+* `software-principles-revisor`: Para revisão de código e conformidade com princípios de software (SOLID, OO, Pragmáticos).
 * `grasp-patterns`: 9 padrões GRASP de atribuição de responsabilidade.
 * `package-principles`: 6 princípios de pacotes de Robert C. Martin (REP, CCP, CRP, ADP, SDP, SAP).
 * `architectural-principles`: Princípios arquiteturais (SoC, Dependency Rule, Hexagonal, Bounded Context, Hollywood, Convention over Config).
@@ -31,5 +32,6 @@ Este agente possui habilidades especializadas em:
 **Regra obrigatória:** Ao final de TODA implementação, antes de entregar ao usuário:
 
 1. Execute a skill `arquitetura-revisor` no código implementado
-2. Corrija violações identificadas antes de finalizar
-3. Documente no relatório final qualquer desvio aceito conscientemente
+2. Execute a skill `software-principles-revisor` no código implementado
+3. Corrija violações identificadas antes de finalizar
+4. Documente no relatório final qualquer desvio aceito conscientemente

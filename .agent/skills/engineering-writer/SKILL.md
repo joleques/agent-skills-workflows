@@ -166,6 +166,35 @@ Siga este fluxo:
 └─────────────────────────────────────────────────┘
 ```
 
+---
+
+### 📌 Citações e Fontes
+
+Sempre que citar um conceito, autor, livro, artigo ou documentação externa, **inclua uma footnote Markdown** no ponto da citação e a referência completa no final do artigo.
+
+**Regras:**
+
+1. Use footnotes Markdown: `[^N]` no texto e `[^N]: Referência` no rodapé
+2. Formato da referência: `Autor, "Título". URL` (quando disponível)
+3. Links de referência fornecidos pelo usuário devem aparecer como fontes quando usados como base
+4. Agrupe todas as footnotes em uma seção **"Referências"** no final do artigo
+
+**Exemplo:**
+
+```markdown
+Como Eric Evans descreve no conceito de Bounded Context[^1], separar
+os limites do domínio é essencial antes de pensar em microsserviços.
+
+<!-- no final do artigo -->
+
+[^1]: Eric Evans, "Domain-Driven Design: Tackling Complexity in the Heart of Software". https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215
+```
+
+> [!IMPORTANT]
+> **Sem citação sem fonte.** Se não há fonte rastreável, reformule a frase para não parecer uma citação atribuída.
+
+---
+
 ### Checklist de Qualidade
 
 ```markdown
@@ -186,6 +215,10 @@ Siga este fluxo:
 - [ ] Tom levemente irônico (não agressivo)
 - [ ] Baseado em experiência, não em teoria pura
 
+### Citações
+- [ ] Citações com footnotes (`[^N]`) e links no rodapé
+- [ ] Seção "Referências" presente no final do artigo
+
 ### Tamanho
 - [ ] Adequado ao formato solicitado
 ```
@@ -205,6 +238,7 @@ Siga este fluxo:
 │  Estrutura   → Provocação → Contexto → Experiência →       │
 │                Análise → Conclusão                          │
 │  Evite       → Hype, buzzwords, "verdade absoluta"          │
+│  Citações    → Footnote [^N] + link na seção Referências    │
 │                                                             │
 │  TESTE FINAL: "O leitor sai pensando em como melhorar      │
 │               seu sistema?" Se sim → ✅  Se não → ❌        │

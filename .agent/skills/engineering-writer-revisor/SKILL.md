@@ -120,6 +120,16 @@ Verifique se o artigo segue as 5 seções esperadas:
 - ❌ Texto genérico que serve para qualquer tema
 - ❌ Conteúdo que não muda nada no dia a dia do leitor
 
+#### 4.4 Citações e Fontes
+
+**Verificar:**
+- ✅ Citações possuem footnotes Markdown (`[^N]`)
+- ✅ Footnotes incluem link para a fonte original (quando disponível)
+- ✅ Seção "Referências" presente no final do artigo com todas as footnotes
+- ❌ Citação sem footnote correspondente
+- ❌ Footnote sem link ou referência incompleta
+- ❌ Conceito atribuído a autor/livro sem referência rastreável
+
 ---
 
 ### 5. Análise de Formato
@@ -187,6 +197,7 @@ Gere um relatório Markdown com:
 | Título | ✅/⚠️/❌ | X |
 | Comprimento | ✅/⚠️/❌ | X |
 | Expressões Proibidas | ✅/❌ | X |
+| Citações e Fontes | ✅/⚠️/❌ | X |
 
 ## Veredicto: ✅ APROVADO / ⚠️ AJUSTAR / ❌ REESCREVER
 
@@ -233,6 +244,7 @@ Gere um relatório Markdown com:
 │  Trade-offs  → Mostra nuances ou "verdade absoluta"?        │
 │  Valor       → Leitor sai pensando em melhorar algo?        │
 │  Proibições  → Sem hype, buzzwords, "best practices" vagas? │
+│  Citações    → Footnote [^N] + link na seção Referências?   │
 │  Tamanho     → Adequado ao formato solicitado?              │
 │                                                             │
 │  TESTE FINAL: "Eu compartilharia isso com meu time?"        │

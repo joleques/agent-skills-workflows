@@ -28,6 +28,8 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 │   ├── devcontainer/              # Configuração de Dev Containers
 │   ├── documentador/              # Geração de docs para RAG
 │   ├── documentador_revisor/      # Validação de docs RAG
+│   ├── engineering-writer/        # Escrita de artigos técnicos
+│   ├── engineering-writer-revisor/ # Revisão de artigos técnicos
 │   ├── go-initializer/            # Scaffolding de projetos Go
 │   ├── grasp/                     # Padrões GRASP
 │   ├── jira-workflow/             # Gestão de tickets Jira
@@ -38,7 +40,8 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 │   └── software-principles-revisor/ # Revisão de aderência a princípios de software
 └── workflows/                   # Orquestrações multi-skill
     ├── hermes.md                  # Pipeline de documentação RAG
-    └── init-project.md            # Inicialização completa de projetos
+    ├── init-project.md            # Inicialização completa de projetos
+    └── write-article.md           # Produção de artigos técnicos
 ```
 
 ---
@@ -49,6 +52,7 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 |---------|-----------|
 | `/hermes` | Orquestra os agentes **Documentador** e **Revisor** para processar arquivos `.md` e gerar documentação RAG-ready |
 | `/init-project` | Inicializa um novo projeto executando skills de **Dev Container**, **Kubernetes** e opcionalmente **Go Initializer** |
+| `/write-article` | Orquestra **Engineering Writer** e **Revisor** para produzir artigos técnicos com ciclo de revisão automática (máx. 5 iterações) |
 
 ---
 

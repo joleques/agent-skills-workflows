@@ -26,6 +26,8 @@ Este agente possui habilidades especializadas em:
 * `package-principles`: 6 princípios de pacotes de Robert C. Martin (REP, CCP, CRP, ADP, SDP, SAP).
 * `architectural-principles`: Princípios arquiteturais (SoC, Dependency Rule, Hexagonal, Bounded Context, Hollywood, Convention over Config).
 * `quality-assurance`: Para padrões de testes e mocks.
+* `engineering-writer`: Escrita de artigos técnicos sobre arquitetura de software.
+* `engineering-writer-revisor`: Revisão de artigos técnicos — valida estrutura, estilo, tom e qualidade.
 
 ## ✅ Checklist Pós-Implementação
 

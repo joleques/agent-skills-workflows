@@ -25,6 +25,7 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 │   ├── arquitetura/               # Padrão de arquitetura proposta-arq
 │   ├── arquitetura-revisor/       # Revisão de conformidade arquitetural
 │   ├── design-patterns/           # Especialista pragmático em GoF
+│   ├── designer/                  # Design de conteúdo visual e estrutural (HTML/Imagens)
 │   ├── devcontainer/              # Configuração de Dev Containers
 │   ├── documentador/              # Geração de docs para RAG
 │   ├── documentador_revisor/      # Validação de docs RAG

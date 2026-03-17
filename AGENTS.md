@@ -28,6 +28,7 @@ Este agente possui habilidades especializadas em:
 * `quality-assurance`: Para padrões de testes e mocks.
 * `engineering-writer`: Escrita de artigos técnicos sobre arquitetura de software.
 * `engineering-writer-revisor`: Revisão de artigos técnicos — valida estrutura, estilo, tom e qualidade.
+* `researcher`: Pesquisador de temas — busca os links mais atuais no Google com filtro de período e resumo breve.
 
 ## ✅ Checklist Pós-Implementação
 

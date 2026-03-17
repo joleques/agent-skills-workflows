@@ -228,7 +228,7 @@ Após a finalização e notificação do artigo, ofereça a criação de materia
 ## Exemplo de Uso
 
 ```
-/write-article
+/write-tech-article
 
 > Qual o tema do artigo?
 Microserviços prematuros

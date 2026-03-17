@@ -42,7 +42,7 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 └── workflows/                   # Orquestrações multi-skill
     ├── hermes.md                  # Pipeline de documentação RAG
     ├── init-project.md            # Inicialização completa de projetos
-    └── write-article.md           # Produção de artigos técnicos
+    └── write-tech-article.md      # Produção de artigos técnicos
 ```
 
 ---
@@ -53,7 +53,7 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 |---------|-----------|
 | `/hermes` | Orquestra os agentes **Documentador** e **Revisor** para processar arquivos `.md` e gerar documentação RAG-ready |
 | `/init-project` | Inicializa um novo projeto executando skills de **Dev Container**, **Kubernetes** e opcionalmente **Go Initializer** |
-| `/write-article` | Orquestra **Engineering Writer** e **Revisor** para produzir artigos técnicos com ciclo de revisão automática (máx. 5 iterações) |
+| `/write-tech-article` | Orquestra **Pesquisador**, **Escritor**, **Revisor** e **Designer** para pesquisar referências, produzir artigos técnicos sobre engenharia de software com revisão automática (máx. 5 iterações) e gerar materiais visuais |
 
 ---
 

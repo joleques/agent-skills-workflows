@@ -12,6 +12,7 @@ Este workflow orquestra dois agentes especializados para produzir artigos técni
   - `.agent/skills/engineering-writer/SKILL.md`
   - `.agent/skills/engineering-writer-revisor/SKILL.md`
   - `.agent/skills/researcher/SKILL.md`
+  - `.agent/skills/designer/SKILL.md`
 
 ---
 
@@ -206,6 +207,24 @@ Inclua o caminho do arquivo em `PathsToReview` para o usuário revisar o conteú
 
 ---
 
+### 9. Geração de Imagens (Skill Designer)
+
+Após a finalização e notificação do artigo, ofereça a criação de materiais visuais (imagens, infográficos, slides, carrosséis) baseados no texto recém-escrito.
+
+1. Pergunte ao usuário:
+   `Gostaria de gerar imagens ou materiais visuais (ex: carrossel para LinkedIn, infográfico) baseados neste artigo usando a skill Designer? (S/N)`
+2. Aguarde a resposta.
+3. Se "Sim", pergunte qual formato e quantidade de imagens deseja.
+4. Leia a skill do Designer:
+
+```
+.agent/skills/designer/SKILL.md
+```
+
+5. Execute a skill passando o conteúdo do artigo final como base para a criação visual, conforme as regras da skill.
+
+---
+
 ## Exemplo de Uso
 
 ```
@@ -254,4 +273,15 @@ Artigo médio
 > Arquivo salvo em: ./artigos/microservicos-prematuros.md
 > Iterações: 2
 > Referências: 2
+>
+> Gostaria de gerar imagens ou materiais visuais (ex: carrossel para LinkedIn, infográfico) baseados neste artigo usando a skill Designer? (S/N)
+
+> S
+
+> Qual formato desejado?
+
+> Um carrossel de 4 imagens para o LinkedIn.
+
+> Lendo skill Designer...
+> (Inicia execução da skill Designer para gerar as imagens)
 ```

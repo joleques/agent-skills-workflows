@@ -358,11 +358,11 @@ Antes de reverter, executar `git log --oneline -n 10` para ajudar o usuário a i
 
 # ATALHOS
 
-Atalhos são comandos compostos que encapsulam múltiplas operações Git em um único fluxo.
+Atalhos são comandos compostos que encapsulam múltiplas operações Git em um único fluxo, executadas via **script shell** para evitar múltiplas confirmações.
 
 ## `enviar {mensagem}`
 
-Encapsula `git add .` + `git commit` + `git push` em uma única ação.
+Encapsula `git add .` + `git commit` + `git push` em uma única ação via script `scripts/git-enviar.sh`.
 
 **Parâmetros**:
 | Parâmetro | Obrigatório | Padrão |
@@ -380,40 +380,37 @@ Encapsula `git add .` + `git commit` + `git push` em uma única ação.
 ┌──────────────────▼───────────────────────────────┐
 │ 2. Perguntar: "Pertence a um ticket?"            │
 │                                                  │
-│    SIM → Usuário informa o número do ticket      │
-│    NÃO → Seguir sem ticket                       │
+│    SIM → Mensagem final: {TICKET} - {MENSAGEM}   │
+│    NÃO → Mensagem final: {MENSAGEM}             │
 └──────────────────┬───────────────────────────────┘
                    │
 ┌──────────────────▼───────────────────────────────┐
-│ 3. Executar em sequência:                        │
+│ 3. Executar script com UM ÚNICO run_command:     │
 │                                                  │
-│    git -C {{DIR}} add .                          │
-│    git -C {{DIR}} commit -m "{{MSG_FINAL}}"      │
-│    git -C {{DIR}} push                           │
+│    bash {{SKILL_DIR}}/scripts/git-enviar.sh      │
+│         "{{MSG_FINAL}}" "{{DIR}}"                │
 └──────────────────────────────────────────────────┘
 ```
 
-**Com ticket**:
-- Ticket: `AUT-2345`
-- Mensagem: `adiciona validação de campos`
-- Resultado:
+### Implementação Técnica
+
+O agente **DEVE** montar a mensagem final ANTES de chamar o script, e executar tudo em **um único `run_command`**:
+
+**Com ticket** (ex: `AUT-2345` + `adiciona validação de campos`):
 ```bash
-git -C {{DIR}} add .
-git -C {{DIR}} commit -m "AUT-2345 - adiciona validação de campos"
-git -C {{DIR}} push
+bash /caminho/da/skill/scripts/git-enviar.sh "AUT-2345 - adiciona validação de campos" "/dir/do/projeto"
 ```
 
-**Sem ticket**:
-- Mensagem: `fix: corrige parse de datas`
-- Resultado:
+**Sem ticket** (ex: `fix: corrige parse de datas`):
 ```bash
-git -C {{DIR}} add .
-git -C {{DIR}} commit -m "fix: corrige parse de datas"
-git -C {{DIR}} push
+bash /caminho/da/skill/scripts/git-enviar.sh "fix: corrige parse de datas" "/dir/do/projeto"
 ```
 
 > [!IMPORTANT]
-> Se qualquer comando da sequência falhar, **PARAR** a execução e informar o erro ao usuário. Não avançar para o próximo comando.
+> O script usa `set -e` — se qualquer comando falhar, a execução **PARA** automaticamente. O agente deve informar o erro ao usuário.
+
+> [!CAUTION]
+> **NUNCA** execute add, commit e push como 3 `run_command` separados. Use **SEMPRE** o script para que o usuário confirme apenas **UMA VEZ**.
 
 ---
 

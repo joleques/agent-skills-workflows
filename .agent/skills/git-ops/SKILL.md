@@ -385,35 +385,38 @@ Encapsula `git add .` + `git commit` + `git push` em uma única ação via scrip
 └──────────────────┬───────────────────────────────┘
                    │
 ┌──────────────────▼───────────────────────────────┐
-│ 3. Analisar alterações (ANTES do push):          │
-│    a) git -C {{DIR}} add .                       │
-│    b) git -C {{DIR}} diff --staged               │
-│    c) Agente analisa o diff e gera resumo        │
-│    d) Salvar resumo em git-ops/{{NOME}}.md       │
+│ 3. Agente gera o resumo:                         │
+│    a) git diff (SafeToAutoRun: true)             │
+│    b) Analisa o diff e cria o arquivo .md        │
+│       em git-ops/{{NOME}}.md                     │
 └──────────────────┬───────────────────────────────┘
                    │
 ┌──────────────────▼───────────────────────────────┐
-│ 4. Executar script com UM ÚNICO run_command:     │
+│ 4. Executar script (1 ÚNICO run_command):        │
 │                                                  │
 │    bash {{SKILL_DIR}}/scripts/git-enviar.sh      │
-│         "{{MSG_FINAL}}" "{{DIR}}"                │
-└──────────────────┬───────────────────────────────┘
-                   │
-┌──────────────────▼───────────────────────────────┐
-│ 5. Após o push, capturar hash do commit:         │
-│    git -C {{DIR}} log --oneline -n 1             │
-│    Atualizar o resumo com o hash                 │
+│      "{{MSG_FINAL}}" "{{DIR}}" "{{RESUMO_PATH}}" │
+│                                                  │
+│    O script faz TUDO internamente:               │
+│    → git add .                                   │
+│    → git commit -m "{{MSG_FINAL}}"               │
+│    → Captura hash do commit                      │
+│    → Atualiza hash no arquivo de resumo (sed)    │
+│    → git commit --amend (inclui resumo atualiz.) │
+│    → git push                                    │
 └──────────────────────────────────────────────────┘
 ```
 
-### Passo 3 — Geração do Resumo
+> [!CAUTION]
+> **NUNCA** execute add, commit, push, ou atualização de hash como `run_command` separados. Use **SEMPRE** o script para que o usuário confirme apenas **UMA VEZ**. Toda a lógica de Git está encapsulada no script.
+
+### Passo 3 — Geração do Resumo (agente)
 
 **ANTES** de executar o script, o agente **DEVE**:
 
-1. Executar `git -C {{DIR}} add .` para staged das alterações
-2. Executar `git -C {{DIR}} diff --staged` para capturar o diff completo
-3. Analisar o diff e gerar um resumo legível em português
-4. Salvar o resumo em `{{DIR}}/git-ops/{{NOME_ARQUIVO}}.md`
+1. Executar `git -C {{DIR}} diff` com `SafeToAutoRun: true` (leitura, sem risco)
+2. Analisar o diff e gerar um resumo legível em português
+3. Criar o arquivo `.md` em `{{DIR}}/git-ops/{{NOME_ARQUIVO}}.md` (via `write_to_file`, sem confirmação)
 
 **Regras do nome do arquivo**:
 - Converter a mensagem para `kebab-case` (sem acentos, espaços → hifens, tudo minúsculo)
@@ -438,7 +441,7 @@ Encapsula `git add .` + `git commit` + `git push` em uma única ação via scrip
 
 📅 Data: {{DATA}} (formato YYYY-MM-DD HH:mm)
 🔖 Ticket: {{TICKET}} (ou "Sem ticket")
-🔗 Commit: {{HASH}} (preenchido após o push)
+🔗 Commit: (preenchido automaticamente pelo script)
 👤 Branch: {{BRANCH}}
 
 ---
@@ -473,31 +476,22 @@ funções adicionadas/removidas, campos novos, lógica alterada, etc.]
 
 ### Passo 4 — Execução do Script
 
-O agente **DEVE** executar tudo em **um único `run_command`**:
-
-**Com ticket** (ex: `AUT-2345` + `adiciona validação de campos`):
-```bash
-bash /caminho/da/skill/scripts/git-enviar.sh "AUT-2345 - adiciona validação de campos" "/dir/do/projeto"
-```
-
-**Sem ticket** (ex: `fix: corrige parse de datas`):
-```bash
-bash /caminho/da/skill/scripts/git-enviar.sh "fix: corrige parse de datas" "/dir/do/projeto"
-```
-
-### Passo 5 — Atualização do Resumo
-
-Após o push, capturar o hash do commit e atualizar o campo `🔗 Commit:` no arquivo de resumo.
+O agente executa **um único `run_command`** passando 3 parâmetros:
 
 ```bash
-git -C {{DIR}} log --oneline -n 1
+bash /caminho/da/skill/scripts/git-enviar.sh "{{MSG_FINAL}}" "{{DIR}}" "{{DIR}}/git-ops/{{NOME}}.md"
 ```
+
+O script internamente:
+1. `git add .` (inclui o arquivo de resumo)
+2. `git commit -m "{{MSG_FINAL}}"`
+3. Captura o hash do commit
+4. Atualiza `🔗 Commit:` no resumo com o hash via `sed`
+5. `git add` + `git commit --amend --no-edit` (inclui resumo atualizado)
+6. `git push`
 
 > [!IMPORTANT]
 > O script usa `set -e` — se qualquer comando falhar, a execução **PARA** automaticamente. O agente deve informar o erro ao usuário.
-
-> [!CAUTION]
-> **NUNCA** execute add, commit e push como 3 `run_command` separados. Use **SEMPRE** o script para que o usuário confirme apenas **UMA VEZ**.
 
 ---
 

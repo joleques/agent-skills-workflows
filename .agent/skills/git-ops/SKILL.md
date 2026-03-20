@@ -358,11 +358,13 @@ Antes de reverter, executar `git log --oneline -n 10` para ajudar o usuário a i
 
 # ATALHOS
 
-Atalhos são comandos compostos que encapsulam múltiplas operações Git em um único fluxo, executadas via **script shell** para evitar múltiplas confirmações.
+Atalhos são comandos compostos que encapsulam múltiplas operações Git em um único fluxo, usando **2 scripts** para minimizar confirmações.
 
 ## `enviar {mensagem}`
 
-Encapsula `git add .` + `git commit` + `git push` em uma única ação via script `scripts/git-enviar.sh`, com **geração automática de resumo das alterações**.
+Encapsula `git add .` + análise de diff + geração de resumo + `git commit` + `git push` usando 2 scripts.
+
+**O usuário confirma apenas 2 vezes** (1 por script).
 
 **Parâmetros**:
 | Parâmetro | Obrigatório | Padrão |
@@ -385,38 +387,55 @@ Encapsula `git add .` + `git commit` + `git push` em uma única ação via scrip
 └──────────────────┬───────────────────────────────┘
                    │
 ┌──────────────────▼───────────────────────────────┐
-│ 3. Agente gera o resumo:                         │
-│    a) git diff (SafeToAutoRun: true)             │
-│    b) Analisa o diff e cria o arquivo .md        │
-│       em git-ops/{{NOME}}.md                     │
+│ 3. 🔵 CONFIRMAÇÃO 1: git-resumo.sh              │
+│    Script faz: add . + diff --staged             │
+│    Retorna: branch, arquivos, stat, diff         │
 └──────────────────┬───────────────────────────────┘
                    │
 ┌──────────────────▼───────────────────────────────┐
-│ 4. Executar script (1 ÚNICO run_command):        │
-│                                                  │
-│    bash {{SKILL_DIR}}/scripts/git-enviar.sh      │
-│      "{{MSG_FINAL}}" "{{DIR}}" "{{RESUMO_PATH}}" │
-│                                                  │
-│    O script faz TUDO internamente:               │
-│    → git add .                                   │
+│ 4. Agente analisa o output e gera o resumo       │
+│    (write_to_file, SEM confirmação)              │
+│    → git-ops/{{NOME}}.md                         │
+└──────────────────┬───────────────────────────────┘
+                   │
+┌──────────────────▼───────────────────────────────┐
+│ 5. 🔵 CONFIRMAÇÃO 2: git-enviar.sh              │
+│    Script faz TUDO internamente:                 │
+│    → git add . (inclui o resumo)                 │
 │    → git commit -m "{{MSG_FINAL}}"               │
 │    → Captura hash do commit                      │
-│    → Atualiza hash no arquivo de resumo (sed)    │
-│    → git commit --amend (inclui resumo atualiz.) │
+│    → Atualiza hash no resumo (sed)               │
+│    → git commit --amend (inclui hash atualiz.)   │
 │    → git push                                    │
 └──────────────────────────────────────────────────┘
 ```
 
-> [!CAUTION]
-> **NUNCA** execute add, commit, push, ou atualização de hash como `run_command` separados. Use **SEMPRE** o script para que o usuário confirme apenas **UMA VEZ**. Toda a lógica de Git está encapsulada no script.
+### Passo 3 — Script `git-resumo.sh` (Confirmação 1)
 
-### Passo 3 — Geração do Resumo (agente)
+Executa `git add .` e captura todas as informações necessárias para o agente gerar o resumo.
 
-**ANTES** de executar o script, o agente **DEVE**:
+```bash
+bash {{SKILL_DIR}}/scripts/git-resumo.sh "{{DIR}}"
+```
 
-1. Executar `git -C {{DIR}} diff` com `SafeToAutoRun: true` (leitura, sem risco)
-2. Analisar o diff e gerar um resumo legível em português
-3. Criar o arquivo `.md` em `{{DIR}}/git-ops/{{NOME_ARQUIVO}}.md` (via `write_to_file`, sem confirmação)
+**Output do script** (stdout, separado por delimitadores):
+```
+===BRANCH===
+main
+===NAME-STATUS===
+M    path/to/file1.go
+A    path/to/file2.go
+D    path/to/file3.go
+===STAT===
+ path/to/file1.go | 10 +++++-----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+===DIFF===
+[diff completo staged]
+```
+
+### Passo 4 — Agente gera o resumo (sem confirmação)
+
+O agente lê o output do script, interpreta e cria o `.md` com `write_to_file`.
 
 **Regras do nome do arquivo**:
 - Converter a mensagem para `kebab-case` (sem acentos, espaços → hifens, tudo minúsculo)
@@ -430,8 +449,7 @@ Encapsula `git add .` + `git commit` + `git push` em uma única ação via scrip
 {{DIR}}/
 ├── git-ops/                          ← criar se não existir
 │   ├── aut-2345-adiciona-validacao.md
-│   ├── fix-corrige-parse-de-datas.md
-│   └── ...
+│   └── fix-corrige-parse-de-datas.md
 ```
 
 **Template do arquivo de resumo**:
@@ -474,16 +492,16 @@ funções adicionadas/removidas, campos novos, lógica alterada, etc.]
 > [!NOTE]
 > O resumo é gerado pelo agente (LLM) que **analisa o diff** e escreve um texto legível. NÃO é uma cópia do diff — é uma **interpretação** das mudanças.
 
-### Passo 4 — Execução do Script
+### Passo 5 — Script `git-enviar.sh` (Confirmação 2)
 
-O agente executa **um único `run_command`** passando 3 parâmetros:
+Executa commit + push + atualização do resumo com hash, tudo encapsulado:
 
 ```bash
-bash /caminho/da/skill/scripts/git-enviar.sh "{{MSG_FINAL}}" "{{DIR}}" "{{DIR}}/git-ops/{{NOME}}.md"
+bash {{SKILL_DIR}}/scripts/git-enviar.sh "{{MSG_FINAL}}" "{{DIR}}" "{{DIR}}/git-ops/{{NOME}}.md"
 ```
 
 O script internamente:
-1. `git add .` (inclui o arquivo de resumo)
+1. `git add .` (inclui o arquivo de resumo gerado pelo agente)
 2. `git commit -m "{{MSG_FINAL}}"`
 3. Captura o hash do commit
 4. Atualiza `🔗 Commit:` no resumo com o hash via `sed`
@@ -491,7 +509,10 @@ O script internamente:
 6. `git push`
 
 > [!IMPORTANT]
-> O script usa `set -e` — se qualquer comando falhar, a execução **PARA** automaticamente. O agente deve informar o erro ao usuário.
+> Ambos os scripts usam `set -e` — se qualquer comando falhar, a execução **PARA** automaticamente.
+
+> [!CAUTION]
+> **NUNCA** execute add, commit, push, diff ou atualização de hash como `run_command` avulsos. Use **SEMPRE** os 2 scripts para limitar a **2 confirmações**.
 
 ---
 

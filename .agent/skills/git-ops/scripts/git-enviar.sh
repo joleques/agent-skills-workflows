@@ -1,5 +1,5 @@
 #!/bin/bash
-# git-enviar.sh — Atalho completo: add + commit + push + resumo
+# git-enviar.sh — Commit + push + atualização de resumo
 # Gerado pela skill Git Ops
 #
 # Uso:
@@ -10,13 +10,15 @@
 #   $2 = diretório do projeto (opcional, padrão: .)
 #   $3 = caminho do arquivo de resumo .md (opcional)
 #
-# Se o arquivo de resumo for passado, o script:
-#   1. Faz add de tudo (incluindo o resumo)
-#   2. Commit com a mensagem
-#   3. Captura o hash do commit
-#   4. Atualiza o hash no arquivo de resumo
-#   5. Faz amend do commit para incluir a atualização
-#   6. Push
+# Pré-requisito: git add . já foi feito pelo git-resumo.sh
+#
+# O script:
+#   1. git add . (garante que o resumo gerado pelo agente entra)
+#   2. git commit -m "mensagem"
+#   3. Captura hash do commit
+#   4. Se resumo existir: atualiza hash no arquivo via sed
+#   5. Se resumo existir: git add + amend (inclui resumo atualizado)
+#   6. git push
 
 set -e
 
@@ -44,7 +46,7 @@ if ! git -C "$DIR" rev-parse --is-inside-work-tree > /dev/null 2>&1; then
   exit 1
 fi
 
-# Step 1: Add
+# Step 1: Add (inclui o resumo gerado pelo agente)
 echo -e "${YELLOW}📦 Adicionando arquivos...${NC}"
 git -C "$DIR" add .
 
@@ -63,12 +65,11 @@ HASH=$(git -C "$DIR" log --format="%H" -n 1)
 HASH_SHORT=$(git -C "$DIR" log --format="%h" -n 1)
 echo -e "${CYAN}🔗 Hash: ${HASH_SHORT}${NC}"
 
-# Step 4: Atualizar hash no resumo (se existir)
+# Step 4-5: Atualizar hash no resumo e amend (se existir)
 if [ -n "$RESUMO" ] && [ -f "$RESUMO" ]; then
   echo -e "${YELLOW}📄 Atualizando resumo com hash do commit...${NC}"
   sed -i "s|🔗 Commit: .*|🔗 Commit: ${HASH_SHORT} (${HASH})|" "$RESUMO"
 
-  # Step 5: Amend para incluir o resumo atualizado
   git -C "$DIR" add "$RESUMO"
   git -C "$DIR" commit --amend --no-edit
   echo -e "${CYAN}📄 Resumo atualizado e incluído no commit${NC}"
@@ -78,7 +79,7 @@ fi
 echo -e "${YELLOW}🚀 Enviando para o remoto...${NC}"
 git -C "$DIR" push
 
-echo -e "${GREEN}✅ Concluído! add → commit → push executados com sucesso.${NC}"
+echo -e "${GREEN}✅ Concluído! commit → push executados com sucesso.${NC}"
 if [ -n "$RESUMO" ]; then
   echo -e "${GREEN}📄 Resumo salvo em: ${RESUMO}${NC}"
 fi

@@ -29,6 +29,7 @@ Este agente possui habilidades especializadas em:
 * `engineering-writer`: Escrita de artigos técnicos sobre arquitetura de software.
 * `engineering-writer-revisor`: Revisão de artigos técnicos — valida estrutura, estilo, tom e qualidade.
 * `researcher`: Pesquisador de temas — busca os links mais atuais no Google com filtro de período e resumo breve.
+* `git-ops`: Operações Git com resolução inteligente de diretório e atalhos compostos (enviar = add + commit + push + resumo).
 
 ## ✅ Checklist Pós-Implementação
 

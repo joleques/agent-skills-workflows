@@ -20,29 +20,36 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 
 ```
 .agent/
-├── skills/                      # Habilidades especializadas do agente
-│   ├── architectural-principles/  # Princípios arquiteturais
-│   ├── arquitetura/               # Padrão de arquitetura proposta-arq
-│   ├── arquitetura-revisor/       # Revisão de conformidade arquitetural
-│   ├── design-patterns/           # Especialista pragmático em GoF
-│   ├── designer/                  # Design de conteúdo visual e estrutural (HTML/Imagens)
-│   ├── devcontainer/              # Configuração de Dev Containers
-│   ├── documentador/              # Geração de docs para RAG
-│   ├── documentador_revisor/      # Validação de docs RAG
-│   ├── engineering-writer/        # Escrita de artigos técnicos
+├── skills/                        # Habilidades especializadas do agente
+│   ├── answers-questions/          # Responde perguntas com base em documentação
+│   ├── answers-questions-revisor/  # Revisão de QA para fine-tuning
+│   ├── architectural-principles/   # Princípios arquiteturais
+│   ├── arquitetura/                # Padrão de arquitetura proposta-arq
+│   ├── arquitetura-revisor/        # Revisão de conformidade arquitetural
+│   ├── dataset-synthesizer/        # Geração de datasets JSONL para fine-tuning
+│   ├── dataset-synthesizer-revisor/ # Revisão de datasets JSONL
+│   ├── design-patterns/            # Especialista pragmático em GoF
+│   ├── designer/                   # Design de conteúdo visual e estrutural
+│   ├── devcontainer/               # Configuração de Dev Containers
+│   ├── documentador/               # Geração de docs para RAG
+│   ├── documentador_revisor/       # Validação de docs RAG
+│   ├── engineering-writer/         # Escrita de artigos técnicos
 │   ├── engineering-writer-revisor/ # Revisão de artigos técnicos
-│   ├── go-initializer/            # Scaffolding de projetos Go
-│   ├── grasp/                     # Padrões GRASP
-│   ├── jira-workflow/             # Gestão de tickets Jira
-│   ├── kubernetes/                # Manifests K8s com Kustomize
-│   ├── package-principles/        # Princípios de pacotes
-│   ├── quality/                   # Regras de testes e qualidade
-│   ├── software-principles/       # Princípios SOLID, OO, Pragmáticos
-│   └── software-principles-revisor/ # Revisão de aderência a princípios de software
-└── workflows/                   # Orquestrações multi-skill
-    ├── hermes.md                  # Pipeline de documentação RAG
-    ├── init-project.md            # Inicialização completa de projetos
-    └── write-tech-article.md      # Produção de artigos técnicos
+│   ├── git-ops/                    # Operações Git com atalhos compostos
+│   ├── go-initializer/             # Scaffolding de projetos Go
+│   ├── grasp/                      # Padrões GRASP
+│   ├── jira-workflow/              # Gestão de tickets Jira
+│   ├── kubernetes/                 # Manifests K8s com Kustomize
+│   ├── package-principles/         # Princípios de pacotes
+│   ├── quality/                    # Regras de testes e qualidade
+│   ├── researcher/                 # Pesquisador de temas com Google
+│   ├── software-principles/        # Princípios SOLID, OO, Pragmáticos
+│   └── software-principles-revisor/ # Revisão de aderência a princípios
+└── workflows/                     # Orquestrações multi-skill
+    ├── fine-tuning-gemini.md        # Pipeline de fine-tuning de LLMs
+    ├── hermes.md                    # Pipeline de documentação RAG
+    ├── init-project.md              # Inicialização completa de projetos
+    └── write-tech-article.md        # Produção de artigos técnicos
 ```
 
 ---
@@ -51,6 +58,7 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 
 | Comando | Descrição |
 |---------|-----------|
+| `/fine-tuning-gemini` | Orquestra geração e revisão de datasets para **Fine-Tuning de LLMs**, em ciclo iterativo de curadoria (máx. 5x) |
 | `/hermes` | Orquestra os agentes **Documentador** e **Revisor** para processar arquivos `.md` e gerar documentação RAG-ready |
 | `/init-project` | Inicializa um novo projeto executando skills de **Dev Container**, **Kubernetes** e opcionalmente **Go Initializer** |
 | `/write-tech-article` | Orquestra **Pesquisador**, **Escritor**, **Revisor** e **Designer** para pesquisar referências, produzir artigos técnicos sobre engenharia de software com revisão automática (máx. 5 iterações) e gerar materiais visuais |

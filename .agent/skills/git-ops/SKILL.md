@@ -362,7 +362,7 @@ Atalhos são comandos compostos que encapsulam múltiplas operações Git em um 
 
 ## `enviar {mensagem}`
 
-Encapsula `git add .` + `git commit` + `git push` em uma única ação via script `scripts/git-enviar.sh`.
+Encapsula `git add .` + `git commit` + `git push` em uma única ação via script `scripts/git-enviar.sh`, com **geração automática de resumo das alterações**.
 
 **Parâmetros**:
 | Parâmetro | Obrigatório | Padrão |
@@ -385,16 +385,95 @@ Encapsula `git add .` + `git commit` + `git push` em uma única ação via scrip
 └──────────────────┬───────────────────────────────┘
                    │
 ┌──────────────────▼───────────────────────────────┐
-│ 3. Executar script com UM ÚNICO run_command:     │
+│ 3. Analisar alterações (ANTES do push):          │
+│    a) git -C {{DIR}} add .                       │
+│    b) git -C {{DIR}} diff --staged               │
+│    c) Agente analisa o diff e gera resumo        │
+│    d) Salvar resumo em git-ops/{{NOME}}.md       │
+└──────────────────┬───────────────────────────────┘
+                   │
+┌──────────────────▼───────────────────────────────┐
+│ 4. Executar script com UM ÚNICO run_command:     │
 │                                                  │
 │    bash {{SKILL_DIR}}/scripts/git-enviar.sh      │
 │         "{{MSG_FINAL}}" "{{DIR}}"                │
+└──────────────────┬───────────────────────────────┘
+                   │
+┌──────────────────▼───────────────────────────────┐
+│ 5. Após o push, capturar hash do commit:         │
+│    git -C {{DIR}} log --oneline -n 1             │
+│    Atualizar o resumo com o hash                 │
 └──────────────────────────────────────────────────┘
 ```
 
-### Implementação Técnica
+### Passo 3 — Geração do Resumo
 
-O agente **DEVE** montar a mensagem final ANTES de chamar o script, e executar tudo em **um único `run_command`**:
+**ANTES** de executar o script, o agente **DEVE**:
+
+1. Executar `git -C {{DIR}} add .` para staged das alterações
+2. Executar `git -C {{DIR}} diff --staged` para capturar o diff completo
+3. Analisar o diff e gerar um resumo legível em português
+4. Salvar o resumo em `{{DIR}}/git-ops/{{NOME_ARQUIVO}}.md`
+
+**Regras do nome do arquivo**:
+- Converter a mensagem para `kebab-case` (sem acentos, espaços → hifens, tudo minúsculo)
+- Se incluir ticket, o ticket faz parte do nome
+- Exemplos:
+  - `"AUT-2345 - adiciona validação"` → `aut-2345-adiciona-validacao.md`
+  - `"fix: corrige parse de datas"` → `fix-corrige-parse-de-datas.md`
+
+**Estrutura do diretório**:
+```
+{{DIR}}/
+├── git-ops/                          ← criar se não existir
+│   ├── aut-2345-adiciona-validacao.md
+│   ├── fix-corrige-parse-de-datas.md
+│   └── ...
+```
+
+**Template do arquivo de resumo**:
+
+```markdown
+# {{MSG_FINAL}}
+
+📅 Data: {{DATA}} (formato YYYY-MM-DD HH:mm)
+🔖 Ticket: {{TICKET}} (ou "Sem ticket")
+🔗 Commit: {{HASH}} (preenchido após o push)
+👤 Branch: {{BRANCH}}
+
+---
+
+## Arquivos Alterados
+
+| Arquivo | Tipo de Alteração |
+|---------|-------------------|
+| `path/to/file1.go` | Modificado |
+| `path/to/file2.go` | Novo |
+| `path/to/file3.go` | Removido |
+
+---
+
+## Resumo das Alterações
+
+[Resumo em 3-5 frases explicando O QUE mudou e POR QUÊ, baseado
+exclusivamente no conteúdo do diff. Deve ser útil para outro agente
+entender o contexto caso precise fazer rollback.]
+
+---
+
+## Diff Resumido
+
+[Para cada arquivo alterado, listar as mudanças principais
+de forma concisa — não o diff completo, mas os pontos-chave:
+funções adicionadas/removidas, campos novos, lógica alterada, etc.]
+```
+
+> [!NOTE]
+> O resumo é gerado pelo agente (LLM) que **analisa o diff** e escreve um texto legível. NÃO é uma cópia do diff — é uma **interpretação** das mudanças.
+
+### Passo 4 — Execução do Script
+
+O agente **DEVE** executar tudo em **um único `run_command`**:
 
 **Com ticket** (ex: `AUT-2345` + `adiciona validação de campos`):
 ```bash
@@ -404,6 +483,14 @@ bash /caminho/da/skill/scripts/git-enviar.sh "AUT-2345 - adiciona validação de
 **Sem ticket** (ex: `fix: corrige parse de datas`):
 ```bash
 bash /caminho/da/skill/scripts/git-enviar.sh "fix: corrige parse de datas" "/dir/do/projeto"
+```
+
+### Passo 5 — Atualização do Resumo
+
+Após o push, capturar o hash do commit e atualizar o campo `🔗 Commit:` no arquivo de resumo.
+
+```bash
+git -C {{DIR}} log --oneline -n 1
 ```
 
 > [!IMPORTANT]
@@ -499,7 +586,8 @@ bash /caminho/da/skill/scripts/git-enviar.sh "fix: corrige parse de datas" "/dir
 │              log, branch, checkout, diff, stash,            │
 │              merge, rebase, revert                          │
 │                                                             │
-│  Atalhos   → "enviar {msg}" = add . + commit + push        │
+│  Atalhos   → "enviar {msg}" = add + commit + push         │
+│              Gera resumo em git-ops/{msg}.md                │
 │              Pergunta ticket → {TICKET} - {MENSAGEM}       │
 │                                                             │
 │  Commit    → Pergunta mensagem + ticket (opcional)          │

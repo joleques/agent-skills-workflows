@@ -134,13 +134,22 @@ Combine o tema com o contexto temporal para maximizar a relevância:
 
 Os resultados DEVEM ser salvos em um arquivo `.md` seguindo estas regras:
 
-### Estrutura de diretórios
+### Diretório de Output
+
+A skill aceita um **diretório de output opcional**. Se um caminho for informado (ex: pelo workflow `write-tech-article`), salvar os resultados nesse diretório. Caso contrário, usar o padrão `search/`.
+
+**Com diretório de output (ex: chamado pelo workflow):**
+
+```
+artigos/{titulo-slug}/search/
+├── ultimas-24-horas_v1.md
+└── ultima-semana_v1.md
+```
+
+**Sem diretório de output (padrão, chamado standalone):**
 
 ```
 <raiz-do-projeto>/
-├── .agent/
-│   └── skills/
-│       └── researcher/
 ├── search/                          ← criar se não existir
 │   └── <nome-do-tema>/              ← criar se não existir
 │       ├── ultimas-24-horas_v1.md
@@ -148,7 +157,7 @@ Os resultados DEVEM ser salvos em um arquivo `.md` seguindo estas regras:
 │       └── ultima-semana_v1.md
 ```
 
-- A pasta `search/` fica na **raiz do projeto** (mesmo nível de `.agent/`)
+- Quando standalone, a pasta `search/` fica na **raiz do projeto** (mesmo nível de `.agent/`)
 - Dentro de `search/`, criar uma subpasta com o **nome do tema** em `kebab-case` (sem acentos, espaços ou caracteres especiais)
 - Se a pasta `search/` ou a subpasta do tema **não existirem**, criá-las automaticamente
 
@@ -263,7 +272,8 @@ Se o usuário fornecer parâmetros inválidos:
 │  Objetivo    → Buscar links atuais sobre um tema            │
 │  Parâmetros  → Tema + Período (3 opções) + Qtd (1–10)      │
 │  Tools       → search_web + read_url_content                │
-│  Saída       → Arquivo .md em search/{tema}/{periodo}_vN   │
+│  Saída       → Padrão: search/{tema}/{periodo}_vN             │
+│               → Com output: {output_dir}/{periodo}_vN         │
 │  Resumo      → 2–3 frases por link, factual e objetivo     │
 │  Restrição   → Apenas conteúdo encontrado, sem invenção    │
 │  Versão      → Auto-incrementa _v1, _v2, _v3...            │

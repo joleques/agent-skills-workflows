@@ -1,28 +1,61 @@
-# 🎨 Skill: Designer
+# 🎨 Designer — Criação de Conteúdo Visual
 
-A skill **Designer** transforma o agente de IA em uma Diretora de Arte Sênior focada em marketing de conteúdo e design de alto impacto. Ela é projetada para criar e estruturar peças visuais (imagens, carrosséis, slides e animações) sempre baseadas em um conteúdo textual de entrada.
+Skill que transforma o agente em uma Diretora de Arte Sênior focada em marketing de conteúdo e design de alto impacto. Cria imagens, infográficos, slides e animações sempre baseadas em conteúdo textual de entrada.
 
-## 🎯 Objetivo
+## Parâmetros
 
-Transformar textos, artigos ou resumos fornecidos pelo usuário em peças visuais coerentes e esteticamente atraentes, adaptadas ao formato ideal da plataforma de destino (Instagram, LinkedIn, TikTok, Apresentações).
+| Parâmetro | Obrigatório | Descrição |
+|-----------|:-----------:|-----------|
+| **Conteúdo base** | ✅ | Texto, arquivo `.md` ou URL que será a fundação da imagem |
+| **Plataforma** | ✅ | Instagram, LinkedIn, TikTok ou Slides |
+| **Formato** | ✅ | Tipo de peça (post, carrossel, infográfico, etc.) |
+| **Diretório de output** | ❌ | Caminho personalizado para salvar materiais (padrão: `image/`) |
 
-## 🚀 Como Funciona
+## Como Funciona
 
-1. **Conteúdo Restrito:** A skill **não inventa** conteúdo do zero. O usuário deve obrigatoriamente fornecer o texto base ou o caminho de um arquivo (`.md`, `.txt`) que será a fundação da imagem.
-2. **Abordagem Web-First:** Antes de gerar qualquer imagem, a skill cria a estrutura do design em código (`HTML/CSS`), salvando-o no diretório padronizado do projeto.
-3. **Organização de Ativos:** Todo material gerado (HTMLs e Imagens finais) é salvo obrigatoriamente dentro de `/image/[tema-do-trabalho]/` na raiz do workspace.
-4. **Formatos Suportados:**
-   - **Instagram:** Posts feed, stories, carrosséis.
-   - **LinkedIn:** Posts únicos, carrosséis informativos, infográficos estruturados.
-   - **TikTok / Reels:** Roteiros ou drafts visuais verticais (1080x1920).
-   - **Slides:** Apresentações Widescreen (16:9).
+1. **Conteúdo Restrito:** Não inventa conteúdo — o usuário deve fornecer o texto base ou caminho de arquivo
+2. **Abordagem Web-First:** Cria o design em HTML/CSS antes de converter em imagem
+3. **Output organizado:** Todo material é salvo no diretório de output definido
 
-## 💻 Exemplo de Uso
+## Estrutura de Saída
 
-Você pode acionar a skill solicitando algo como:
+**Standalone (padrão):**
 
-> *"Usando a skill designer, crie um infográfico para o LinkedIn baseado no conteúdo do arquivo `/artigos/meu-novo-artigo.md`. Salve os assets na pasta de acordo com o padrão."*
+```
+image/
+└── uso-ia-desenvolvedores/
+    ├── carrossel.html
+    └── carrossel.png
+```
 
-## 🗂️ Arquivos Relacionados
+**Via workflow (com diretório de output):**
 
-* `SKILL.md`: Contém o prompt de comportamento, tom e restrições arquiteturais da skill repassadas ao agente de IA.
+```
+artigos/{titulo-slug}/image/
+└── {tema}/
+    ├── infografico.html
+    └── infografico.png
+```
+
+## Formatos Suportados
+
+| Plataforma | Formatos |
+|------------|----------|
+| **Instagram** | Posts feed (1080x1080), stories (1080x1920), carrosséis |
+| **LinkedIn** | Posts únicos (1200x627), carrosséis, infográficos |
+| **TikTok** | Vídeo vertical / animação (1080x1920) |
+| **Slides** | Apresentações widescreen (1920x1080 / 16:9) |
+
+## Exemplo de Uso
+
+```
+Usando a skill designer, crie um infográfico para o LinkedIn
+baseado no conteúdo do arquivo artigos/meu-artigo/content/artigo.md
+```
+
+## Arquivos
+
+| Arquivo | Descrição |
+|---------|-----------|
+| `SKILL.md` | Instruções completas da skill |
+| `README.md` | Este arquivo |

@@ -40,6 +40,8 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 │   ├── git-ops/                    # Operações Git com atalhos compostos
 │   ├── go-initializer/             # Scaffolding de projetos Go
 │   ├── grasp/                      # Padrões GRASP
+│   ├── instagram-poster/           # Publicação no Instagram via Graph API
+│   ├── linkedin-poster/            # Publicação no LinkedIn via Posts API
 │   ├── jira-workflow/              # Gestão de tickets Jira
 │   ├── kubernetes/                 # Manifests K8s com Kustomize
 │   ├── package-principles/         # Princípios de pacotes
@@ -65,7 +67,7 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 | `/fine-tuning-gemini` | Orquestra geração e revisão de datasets para **Fine-Tuning de LLMs**, em ciclo iterativo de curadoria (máx. 5x) |
 | `/hermes` | Orquestra os agentes **Documentador** e **Revisor** para processar arquivos `.md` e gerar documentação RAG-ready |
 | `/init-project` | Inicializa um novo projeto executando skills de **Dev Container**, **Kubernetes** e opcionalmente **Go Initializer** |
-| `/write-tech-article` | Orquestra **Pesquisador**, **Escritor**, **Revisor** e **Designer** para pesquisar referências, produzir artigos técnicos sobre engenharia de software com revisão automática (máx. 5 iterações) e gerar materiais visuais |
+| `/write-tech-article` | Orquestra **Pesquisador**, **Escritor**, **Revisor** e **Designer** para pesquisar referências, produzir artigos técnicos com revisão automática (máx. 5 iterações) e gerar materiais visuais — tudo organizado em `artigos/{titulo}/` |
 
 ---
 

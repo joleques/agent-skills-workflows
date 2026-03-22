@@ -67,7 +67,12 @@ Adapte a proporção e o estilo visual de acordo com a plataforma alvo:
 
 ### Diretório e Processo de Geração
 
-**Regra Absoluta:** TODO material gerado (HTMLs de design, imagens finais, prints de slides) DEVE ser salvo impreterivelmente na pasta `image/` (na raiz do seu escopo de execução), dentro de um subdiretório com o nome ou tema do trabalho pedido (ex: `image/uso-ia-desenvolvedores/`).
+**Diretório de output:** A skill aceita um **diretório de output opcional**. Se um caminho for informado (ex: pelo workflow `write-tech-article`), salvar os materiais nesse diretório. Caso contrário, usar o padrão `image/`.
+
+- **Com diretório de output (ex: chamado pelo workflow):** salvar em `artigos/{titulo-slug}/image/{tema}/`
+- **Sem diretório de output (padrão, chamado standalone):** salvar em `image/{tema}/` na raiz do projeto
+
+**Regra Absoluta:** TODO material gerado (HTMLs de design, imagens finais, prints de slides) DEVE ser salvo no diretório de output definido, dentro de um subdiretório com o nome ou tema do trabalho pedido.
 
 O processo de criação de imagem deve **obrigatoriamente** seguir esta sequência técnica:
 1. **Modelagem Web:** Gerar primeiro o código estrutural e visual em HTML/CSS (usando estilos bem definidos para a proporção alvo).

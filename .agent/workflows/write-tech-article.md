@@ -34,7 +34,16 @@ Pergunte ao usuário:
 
 Aguarde a resposta antes de prosseguir.
 
-*Observação: O diretório de saída será sempre `/artigos` (criado automaticamente caso não exista).*
+4. **Diretório de saída**: Após coletar os parâmetros, gere o slug do título em `kebab-case` (sem acentos, espaços ou caracteres especiais) e defina o diretório base de trabalho:
+
+```
+artigos/{titulo-slug}/
+├── content/    ← artigo final + revisões
+├── search/     ← resultados de pesquisa
+└── image/      ← imagens geradas
+```
+
+Crie as pastas automaticamente caso não existam.
 
 ---
 
@@ -50,6 +59,7 @@ Após coletar os parâmetros, execute a skill `researcher` para buscar referênc
 
 2. Execute a skill passando:
    - **Tema**: o mesmo tema informado pelo usuário no passo 1
+   - **Diretório de output**: `artigos/{titulo-slug}/search/` (a skill deve salvar os resultados neste diretório em vez do padrão `search/`)
    - Deixe que a skill pergunte ao usuário as demais informações necessárias (como período e quantidade de links).
 
 3. Após a pesquisa, apresente os resultados ao usuário no seguinte formato:
@@ -161,12 +171,13 @@ Se o Revisor não aprovou o artigo:
 
 ### 7. Salvar Artigo Final
 
-Salve o artigo no diretório `/artigos` na raiz do projeto, criando-o caso não exista.
+Salve o artigo no diretório `artigos/{titulo-slug}/content/` na raiz do projeto, criando-o caso não exista.
 
 **Regras para o nome do arquivo:**
 - Use o tema como base para o nome
 - Formato: `kebab-case.md` (ex: `microservicos-trade-offs.md`)
 - Sem acentos, espaços ou caracteres especiais
+- Relatórios de revisão também devem ser salvos em `content/` (ex: `revisao-v1.md`, `revisao-v2.md`)
 
 ---
 
@@ -221,7 +232,10 @@ Após a finalização e notificação do artigo, ofereça a criação de materia
 .agent/skills/designer/SKILL.md
 ```
 
-5. Execute a skill passando o conteúdo do artigo final como base para a criação visual, conforme as regras da skill.
+5. Execute a skill passando:
+   - O conteúdo do artigo final como base para a criação visual
+   - **Diretório de output**: `artigos/{titulo-slug}/image/` (a skill deve salvar as imagens neste diretório em vez do padrão `image/`)
+   - Siga as regras da skill
 
 ---
 

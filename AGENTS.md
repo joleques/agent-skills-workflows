@@ -32,6 +32,8 @@ Este agente possui habilidades especializadas em:
 * `git-ops`: Operações Git com resolução inteligente de diretório e atalhos compostos (enviar = add + commit + push + resumo).
 * `api-documentador`: Documentação completa de APIs em camadas (técnica, não-técnica ou ambas), particionável por contexto e domínio.
 * `api-documentador-revisor`: Revisão de documentação de APIs — valida completude, consistência e qualidade por camada.
+* `instagram-poster`: Publicação de conteúdo no Instagram via Graph API (Meta) — posts de imagem, carrosséis e reels. Usa ImgBB para hospedagem gratuita de imagens.
+* `linkedin-poster`: Publicação de conteúdo no LinkedIn via Posts API — suporta posts de texto, imagem e artigos com link preview. API gratuita com permissão Open.
 
 ## ✅ Checklist Pós-Implementação
 

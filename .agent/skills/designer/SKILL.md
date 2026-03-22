@@ -63,6 +63,43 @@ Adapte a proporção e o estilo visual de acordo com a plataforma alvo:
 
 ---
 
+## 🖼️ Referências Visuais (Opcional)
+
+> [!TIP]
+> Referências visuais **não são obrigatórias**, mas são altamente recomendadas para alinhar expectativas e entregar um resultado mais próximo do que o usuário imagina.
+
+O usuário pode fornecer **até 5 exemplos** de referência visual para guiar o conceito da peça. Esses exemplos podem ser:
+
+| Tipo de Referência | Exemplo | O que Extrair |
+|--------------------|---------|---------------|
+| **Imagem local** | Caminho para um arquivo `.png`, `.jpg`, `.webp` | Paleta de cores, composição, tipografia, estilo gráfico |
+| **Link de referência** | URL de uma landing page, portfólio ou Dribbble/Behance | Layout, hierarquia visual, tom do design |
+| **Post de rede social** | URL de um post no Instagram, LinkedIn ou TikTok | Formato, linguagem visual da plataforma, engajamento visual |
+
+### Como Coletar
+
+1. **Perguntar proativamente:** Junto com o conteúdo base, pergunte ao usuário se ele tem referências visuais que gostaria de compartilhar.
+   - Exemplo: *"Você tem alguma referência visual (imagem, link ou post) que represente o estilo que gostaria? Pode enviar até 5 exemplos."*
+2. **Aceitar silêncio:** Se o usuário não fornecer referências, seguir normalmente com decisões estéticas próprias baseadas no conteúdo e na plataforma alvo.
+3. **Não exigir:** Nunca bloquear a produção por falta de referências.
+
+### Como Usar as Referências
+
+Ao receber referências visuais, antes de iniciar a produção:
+
+1. **Analisar cada referência** — identificar padrões visuais recorrentes (cores, tipografia, layout, mood, densidade de informação).
+2. **Extrair um conceito visual** — sintetizar os elementos comuns em um "briefing visual" interno:
+   - Paleta de cores dominante
+   - Estilo tipográfico (serifada, sans-serif, bold, light)
+   - Nível de complexidade visual (minimalista vs. rico em detalhes)
+   - Tom geral (corporativo, descontraído, técnico, artístico)
+3. **Aplicar ao design** — usar o conceito extraído como guia na etapa de modelagem HTML/CSS, garantindo coerência com as expectativas do usuário.
+
+> [!NOTE]
+> Se as referências forem contraditórias entre si (ex: uma minimalista e outra carregada), priorize o estilo mais coerente com a **plataforma alvo** e o **conteúdo base**, e comunique a decisão ao usuário.
+
+---
+
 ## 🛠️ Instruções de Produção Visual
 
 ### Diretório e Processo de Geração
@@ -90,19 +127,25 @@ Siga este fluxo:
 └───────────────────────┬────────────────────────────────┘
                         │
 ┌───────────────────────▼────────────────────────────────┐
-│ 2. Identificar Plataforma e Formato (Insta, Slide, etc)│
+│ 2. Coletar referências visuais (OPCIONAL, até 5)       │
+│    → Analisar padrões e extrair conceito visual        │
 └───────────────────────┬────────────────────────────────┘
                         │
 ┌───────────────────────▼────────────────────────────────┐
-│ 3. Sintetizar o texto (Curadoria da informação)        │
+│ 3. Identificar Plataforma e Formato (Insta, Slide, etc)│
 └───────────────────────┬────────────────────────────────┘
                         │
 ┌───────────────────────▼────────────────────────────────┐
-│ 4. Desenvolver o design via HTML/CSS (Salvar arquivo)  │
+│ 4. Sintetizar o texto (Curadoria da informação)        │
 └───────────────────────┬────────────────────────────────┘
                         │
 ┌───────────────────────▼────────────────────────────────┐
-│ 5. Converter HTML em Imagem (Salvar /image/[tema]/)    │
+│ 5. Desenvolver o design via HTML/CSS (Salvar arquivo)  │
+│    → Aplicar conceito visual das referências (se houver)│
+└───────────────────────┬────────────────────────────────┘
+                        │
+┌───────────────────────▼────────────────────────────────┐
+│ 6. Converter HTML em Imagem (Salvar /image/[tema]/)    │
 └────────────────────────────────────────────────────────┘
 ```
 
@@ -119,6 +162,8 @@ Siga este fluxo:
 │                                                             │
 │  Regra de Ouro → Imagens baseadas APENAS em conteúdo        │
 │                  fornecido pelo usuário (texto/arquivo)     │
+│  Referências   → Até 5 exemplos visuais (OPCIONAL)          │
+│                  imagens, links ou posts de redes sociais   │
 │  Plataformas   → Instagram, LinkedIn, TikTok, Slides        │
 │  Estilo        → Alto padrão estético, legibilidade         │
 │                                                             │

@@ -48,6 +48,7 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 │   ├── software-principles/        # Princípios SOLID, OO, Pragmáticos
 │   └── software-principles-revisor/ # Revisão de aderência a princípios
 └── workflows/                     # Orquestrações multi-skill
+    ├── doc-api.md                    # Documentação de APIs em camadas
     ├── fine-tuning-gemini.md        # Pipeline de fine-tuning de LLMs
     ├── hermes.md                    # Pipeline de documentação RAG
     ├── init-project.md              # Inicialização completa de projetos
@@ -60,6 +61,7 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 
 | Comando | Descrição |
 |---------|-----------|
+| `/doc-api` | Orquestra os agentes **api-documentador** e **api-documentador-revisor** para gerar documentação de APIs em camadas com ciclo de revisão automática (máx. 5x) |
 | `/fine-tuning-gemini` | Orquestra geração e revisão de datasets para **Fine-Tuning de LLMs**, em ciclo iterativo de curadoria (máx. 5x) |
 | `/hermes` | Orquestra os agentes **Documentador** e **Revisor** para processar arquivos `.md` e gerar documentação RAG-ready |
 | `/init-project` | Inicializa um novo projeto executando skills de **Dev Container**, **Kubernetes** e opcionalmente **Go Initializer** |

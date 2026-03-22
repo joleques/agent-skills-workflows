@@ -47,6 +47,7 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 │   ├── package-principles/         # Princípios de pacotes
 │   ├── quality/                    # Regras de testes e qualidade
 │   ├── researcher/                 # Pesquisador de temas com Google
+│   ├── social-media-psychology/    # Psicologia de redes sociais e algoritmos de distribuição
 │   ├── software-principles/        # Princípios SOLID, OO, Pragmáticos
 │   └── software-principles-revisor/ # Revisão de aderência a princípios
 └── workflows/                     # Orquestrações multi-skill

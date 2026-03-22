@@ -34,6 +34,7 @@ Este agente possui habilidades especializadas em:
 * `api-documentador-revisor`: Revisão de documentação de APIs — valida completude, consistência e qualidade por camada.
 * `instagram-poster`: Publicação de conteúdo no Instagram via Graph API (Meta) — posts de imagem, carrosséis e reels. Usa ImgBB para hospedagem gratuita de imagens.
 * `linkedin-poster`: Publicação de conteúdo no LinkedIn via Posts API — suporta posts de texto, imagem e artigos com link preview. API gratuita com permissão Open.
+* `social-media-psychology`: Psicologia de redes sociais e algoritmos de distribuição — orienta escrita e valida conteúdo para maximizar engajamento no LinkedIn e Instagram.
 
 ## ✅ Checklist Pós-Implementação
 

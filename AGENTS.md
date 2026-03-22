@@ -30,6 +30,8 @@ Este agente possui habilidades especializadas em:
 * `engineering-writer-revisor`: Revisão de artigos técnicos — valida estrutura, estilo, tom e qualidade.
 * `researcher`: Pesquisador de temas — busca os links mais atuais no Google com filtro de período e resumo breve.
 * `git-ops`: Operações Git com resolução inteligente de diretório e atalhos compostos (enviar = add + commit + push + resumo).
+* `api-documentador`: Documentação completa de APIs em camadas (técnica, não-técnica ou ambas), particionável por contexto e domínio.
+* `api-documentador-revisor`: Revisão de documentação de APIs — valida completude, consistência e qualidade por camada.
 
 ## ✅ Checklist Pós-Implementação
 

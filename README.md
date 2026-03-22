@@ -23,6 +23,8 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 ├── skills/                        # Habilidades especializadas do agente
 │   ├── answers-questions/          # Responde perguntas com base em documentação
 │   ├── answers-questions-revisor/  # Revisão de QA para fine-tuning
+│   ├── api-documentador/          # Documentação de APIs em camadas (técnica/não-técnica)
+│   ├── api-documentador-revisor/  # Revisão de documentação de APIs
 │   ├── architectural-principles/   # Princípios arquiteturais
 │   ├── arquitetura/                # Padrão de arquitetura proposta-arq
 │   ├── arquitetura-revisor/        # Revisão de conformidade arquitetural

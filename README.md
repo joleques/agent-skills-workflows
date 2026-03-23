@@ -42,6 +42,7 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 │   ├── grasp/                      # Padrões GRASP
 │   ├── instagram-poster/           # Publicação no Instagram via Graph API
 │   ├── linkedin-poster/            # Publicação no LinkedIn via Posts API
+│   ├── mongodb-ops/                # Conexões e operações seguras (CRUD/Agregações) no MongoDB
 │   ├── jira-workflow/              # Gestão de tickets Jira
 │   ├── kubernetes/                 # Manifests K8s com Kustomize
 │   ├── package-principles/         # Princípios de pacotes

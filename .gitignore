@@ -4,3 +4,9 @@
 /image
 /mongodb-ops
 /git-ops
+
+# Migração AWS gerada pelo workflow /analise-migracao-aws
+/migracao-*
+.agent/workflows/analise-migracao-aws.md
+.agent/skills/migration-analyzer/
+.agent/skills/migration-analyzer-revisor/

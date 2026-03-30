@@ -2,7 +2,7 @@
 
 Repositório de **Skills** e **Workflows** para agentes de IA (como Gemini Code Assist, Antigravity e similares) que auxiliam desenvolvedores no dia a dia.
 
-Aqui você encontra habilidades prontas para uso que automatizam tarefas repetitivas, padronizam a criação de projetos, garantem qualidade de código e aceleram o ciclo de desenvolvimento — tudo orquestrado por agentes inteligentes diretamente na sua IDE.
+Aqui você encontra **34 skills** e **5 workflows** prontos para uso que automatizam tarefas repetitivas, padronizam a criação de projetos, garantem qualidade de código, geram documentação RAG-ready, publicam conteúdo em redes sociais e aceleram o ciclo de desenvolvimento — tudo orquestrado por agentes inteligentes diretamente na sua IDE.
 
 ---
 
@@ -20,43 +20,47 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 
 ```
 .agent/
-├── skills/                        # Habilidades especializadas do agente
-│   ├── answers-questions/          # Responde perguntas com base em documentação
-│   ├── answers-questions-revisor/  # Revisão de QA para fine-tuning
-│   ├── api-documentador/          # Documentação de APIs em camadas (técnica/não-técnica)
-│   ├── api-documentador-revisor/  # Revisão de documentação de APIs
-│   ├── architectural-principles/   # Princípios arquiteturais
-│   ├── arquitetura/                # Padrão de arquitetura proposta-arq
-│   ├── arquitetura-revisor/        # Revisão de conformidade arquitetural
-│   ├── dataset-synthesizer/        # Geração de datasets JSONL para fine-tuning
-│   ├── dataset-synthesizer-revisor/ # Revisão de datasets JSONL
-│   ├── design-patterns/            # Especialista pragmático em GoF
-│   ├── designer/                   # Design de conteúdo visual e estrutural
-│   ├── devcontainer/               # Configuração de Dev Containers
-│   ├── documentador/               # Geração de docs para RAG
-│   ├── documentador_revisor/       # Validação de docs RAG
-│   ├── engineering-writer/         # Escrita de artigos técnicos
-│   ├── engineering-writer-revisor/ # Revisão de artigos técnicos
-│   ├── git-ops/                    # Operações Git com atalhos compostos
-│   ├── go-initializer/             # Scaffolding de projetos Go
-│   ├── grasp/                      # Padrões GRASP
-│   ├── instagram-poster/           # Publicação no Instagram via Graph API
-│   ├── linkedin-poster/            # Publicação no LinkedIn via Posts API
-│   ├── mongodb-ops/                # Conexões e operações seguras (CRUD/Agregações) no MongoDB
-│   ├── jira-workflow/              # Gestão de tickets Jira
-│   ├── kubernetes/                 # Manifests K8s com Kustomize
-│   ├── package-principles/         # Princípios de pacotes
-│   ├── quality/                    # Regras de testes e qualidade
-│   ├── researcher/                 # Pesquisador de temas com Google
-│   ├── social-media-psychology/    # Psicologia de redes sociais e algoritmos de distribuição
-│   ├── software-principles/        # Princípios SOLID, OO, Pragmáticos
-│   └── software-principles-revisor/ # Revisão de aderência a princípios
-└── workflows/                     # Orquestrações multi-skill
-    ├── doc-api.md                    # Documentação de APIs em camadas
-    ├── fine-tuning-gemini.md        # Pipeline de fine-tuning de LLMs
-    ├── hermes.md                    # Pipeline de documentação RAG
-    ├── init-project.md              # Inicialização completa de projetos
-    └── write-tech-article.md        # Produção de artigos técnicos
+├── skills/                            # 34 habilidades especializadas do agente
+│   ├── answers-questions/              # Responde perguntas com base em documentação
+│   ├── answers-questions-revisor/      # Revisão de QA para fine-tuning
+│   ├── api-documentador/              # Documentação de APIs em camadas (técnica/não-técnica)
+│   ├── api-documentador-revisor/      # Revisão de documentação de APIs
+│   ├── architectural-principles/       # Princípios arquiteturais
+│   ├── arquitetura/                    # Padrão de arquitetura proposta-arq
+│   ├── arquitetura-revisor/            # Revisão de conformidade arquitetural
+│   ├── dataset-synthesizer/            # Geração de datasets JSONL para fine-tuning
+│   ├── dataset-synthesizer-revisor/    # Revisão de datasets JSONL
+│   ├── design-patterns/                # Especialista pragmático em GoF
+│   ├── designer/                       # Design de conteúdo visual e estrutural
+│   ├── devcontainer/                   # Configuração de Dev Containers
+│   ├── documentador/                   # Geração de docs para RAG
+│   ├── documentador_revisor/           # Validação de docs RAG
+│   ├── engineering-writer/             # Escrita de artigos técnicos
+│   ├── engineering-writer-revisor/     # Revisão de artigos técnicos
+│   ├── git-ops/                        # Operações Git com atalhos compostos
+│   ├── go-initializer/                 # Scaffolding de projetos Go
+│   ├── grasp/                          # Padrões GRASP
+│   ├── instagram-poster/               # Publicação no Instagram via Graph API
+│   ├── jira-workflow/                  # Gestão de tickets Jira
+│   ├── kubernetes/                     # Manifests K8s com Kustomize
+│   ├── linkedin-poster/                # Publicação no LinkedIn via Posts API
+│   ├── mongodb-ops/                    # Conexões e operações seguras (CRUD/Agregações) no MongoDB
+│   ├── package-principles/             # Princípios de pacotes de Robert C. Martin
+│   ├── product-context-aggregator/     # Agrega artefatos extras de produto via symlinks
+│   ├── product-documenter/             # Documentação de produto RAG-ready para Agentes de IA
+│   ├── product-interviewer/            # Entrevista estruturada para extração de conhecimento de produto
+│   ├── product-interviewer-revisor/    # Revisão do contexto extraído pela entrevista
+│   ├── quality/                        # Regras de testes e qualidade
+│   ├── researcher/                     # Pesquisador de temas com Google
+│   ├── social-media-psychology/        # Psicologia de redes sociais e algoritmos de distribuição
+│   ├── software-principles/            # Princípios SOLID, OO, Pragmáticos
+│   └── software-principles-revisor/    # Revisão de aderência a princípios
+└── workflows/                         # 5 orquestrações multi-skill
+    ├── doc-api.md                       # Documentação de APIs em camadas
+    ├── doc-produto.md                   # Documentação de produto RAG-ready (absorve /hermes)
+    ├── fine-tuning-gemini.md            # Pipeline de fine-tuning de LLMs
+    ├── init-project.md                  # Inicialização completa de projetos
+    └── write-tech-article.md            # Produção de artigos técnicos
 ```
 
 ---
@@ -65,9 +69,9 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 
 | Comando | Descrição |
 |---------|-----------|
-| `/doc-api` | Orquestra os agentes **api-documentador** e **api-documentador-revisor** para gerar documentação de APIs em camadas com ciclo de revisão automática (máx. 5x) |
+| `/doc-api` | Orquestra **api-documentador** e **api-documentador-revisor** para gerar documentação de APIs em camadas com ciclo de revisão automática (máx. 5x) |
+| `/doc-produto` | Orquestra **product-interviewer**, **product-interviewer-revisor**, **product-context-aggregator** e **product-documenter** para gerar documentação de produto RAG-ready. Suporta Modo Completo (entrevista + pipeline) e Modo Rápido (transformação de `.md` existentes). Absorve a funcionalidade do antigo `/hermes` |
 | `/fine-tuning-gemini` | Orquestra geração e revisão de datasets para **Fine-Tuning de LLMs**, em ciclo iterativo de curadoria (máx. 5x) |
-| `/hermes` | Orquestra os agentes **Documentador** e **Revisor** para processar arquivos `.md` e gerar documentação RAG-ready |
 | `/init-project` | Inicializa um novo projeto executando skills de **Dev Container**, **Kubernetes** e opcionalmente **Go Initializer** |
 | `/write-tech-article` | Orquestra **Pesquisador**, **Escritor**, **Revisor** e **Designer** para pesquisar referências, produzir artigos técnicos com revisão automática (máx. 5 iterações) e gerar materiais visuais — tudo organizado em `artigos/{titulo}/` |
 
@@ -98,7 +102,7 @@ cp -r .agent/skills/devcontainer/ /caminho/do/seu/projeto/.agent/skills/
 
 ### Opção 3 — Copiar skills + workflows
 
-Para utilizar os workflows (`/hermes`, `/init-project`), copie também a pasta de workflows:
+Para utilizar os workflows (`/doc-produto`, `/init-project`, `/doc-api`, etc.), copie também a pasta de workflows:
 
 ```bash
 cp -r .agent/ /caminho/do/seu/projeto/
@@ -108,7 +112,7 @@ cp -r .agent/ /caminho/do/seu/projeto/
 
 1. Abra o projeto em uma IDE compatível (VS Code com Gemini Code Assist, Antigravity, etc.)
 2. O agente detectará automaticamente as skills disponíveis em `.agent/skills/`
-3. Use os comandos de slash (`/init-project`, `/hermes`) para acionar os workflows
+3. Use os comandos de slash (`/init-project`, `/doc-produto`, `/doc-api`) para acionar os workflows
 
 ---
 

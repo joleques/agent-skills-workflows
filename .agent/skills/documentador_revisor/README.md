@@ -30,5 +30,5 @@ Não Conformidades Detectadas: [lista de violações]
 ## Quando usar?
 
 - Após a skill `documentador` produzir um documento
-- No workflow `/hermes` como segundo passo de validação
+- No workflow `/doc-produto` (modo rápido) como segundo passo de validação
 - Para garantir que documentos estão prontos para chunking automático

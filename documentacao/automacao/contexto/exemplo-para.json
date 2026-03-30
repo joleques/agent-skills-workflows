@@ -1,0 +1,524 @@
+{
+    "alternativeIdentifier": {
+        {
+            {format alternativeIdentifier
+            }
+        }
+    },
+    "active": {
+        {
+            {format active
+            }
+        }
+    },
+    {
+        {#hasAny taskType taskTypeId
+        }
+    }
+        "taskType": {
+        "alternativeIdentifier": {
+            {
+                {format taskType
+                }
+            }
+        },
+        "id": {
+            {
+                {format taskTypeId
+                }
+            }
+        }
+    },
+    {
+        {/hasAny
+        }
+    }
+        {
+        {#hasAny serviceLocal serviceLocalId
+        }
+    }
+        "serviceLocal": {
+        "alternativeIdentifier": {
+            {
+                {format serviceLocal
+                }
+            }
+        },
+        "id": {
+            {
+                {format serviceLocalId
+                }
+            }
+        }
+    },
+    {
+        {/hasAny
+        }
+    }
+
+        {
+        {#hasAny serviceLocalOrigin serviceLocalOriginId
+        }
+    }
+        "serviceLocalOrigin": {
+        "alternativeIdentifier": {
+            {
+                {format serviceLocalOrigin
+                }
+            }
+        },
+        "id": {
+            {
+                {format serviceLocalOriginId
+                }
+            }
+        }
+    },
+    {
+        {/hasAny
+        }
+    }
+
+        {
+        {#hasAny agent agentId
+        }
+    }
+        "agent": {
+        "alternativeIdentifier": {
+            {
+                {format agent
+                }
+            }
+        },
+        "id": {
+            {
+                {format agentId
+                }
+            }
+        }
+    },
+    {
+        {/hasAny
+        }
+    }
+        "teamExecutionId": {
+        {
+            {format teamExecution
+            }
+        }
+    },
+    {
+        {#hasAny team teamId
+        }
+    }
+        "team": {
+        "alternativeIdentifier": {
+            {
+                {format team
+                }
+            }
+        },
+        "id": {
+            {
+                {format teamId
+                }
+            }
+        }
+    },
+    {
+        {/hasAny
+        }
+    }
+        "initialDate": {
+        {
+            {format (formatDate initialDate)
+            }
+        }
+    },
+    "initialHour": {
+        {
+            {format initialHour
+            }
+        }
+    },
+    "finalDate": {
+        {
+            {format (formatDate finalDate)
+            }
+        }
+    },
+    "finalHour": {
+        {
+            {format finalHour
+            }
+        }
+    },
+    "toleranceAfterEnd": {
+        {
+            {format toleranceAfterEnd
+            }
+        }
+    },
+    "toleranceAfterStart": {
+        {
+            {format toleranceAfterStart
+            }
+        }
+    },
+    "toleranceBeforeEnd": {
+        {
+            {format toleranceBeforeEnd
+            }
+        }
+    },
+    "toleranceBeforeStart": {
+        {
+            {format toleranceBeforeStart
+            }
+        }
+    },
+    "waitTimeOnField": {
+        {
+            {format waitTimeOnField
+            }
+        }
+    },
+    "observation": {
+        {
+            {format observation
+            }
+        }
+    },
+    "priority": {
+        {
+            {format priority
+            }
+        }
+    },
+    "recreateAfterDone": {
+        {
+            {format recreateAfterDone
+            }
+        }
+    },
+    "sendNotification": {
+        {
+            {format sendNotification
+            }
+        }
+    },
+    "skipAgentJourneyValidation": {
+        {
+            {format skipAgentJourneyValidation
+            }
+        }
+    },
+    "situationId": {
+        {
+            {format situation
+            }
+        }
+    },
+    "originTaskId": {
+        {
+            {format originTaskId
+            }
+        }
+    },
+    "customField1": {
+        {
+            {format customField1
+            }
+        }
+    },
+    "customField2": {
+        {
+            {format customField2
+            }
+        }
+    },
+    "customField3": {
+        {
+            {format customField3
+            }
+        }
+    },
+    "negativeReason": {
+        {
+            {format negativeReason
+            }
+        }
+    },
+    "verificationCode": {
+        {
+            {format verificationCode
+            }
+        }
+    },
+    "capacityConsumption": {
+        {
+            {format capacityConsumption
+            }
+        }
+    },
+    "capacityDemand": {
+        {
+            {format capacityDemand
+            }
+        }
+    },
+    "group": {
+        {
+            {format group
+            }
+        }
+    },
+    {
+        {#hasAny image image
+        }
+    }
+        "image": {
+        "url": {
+            {
+                {format image
+                }
+            }
+        }
+    },
+    {
+        {/hasAny
+        }
+    } 
+        "customFields": [
+        {
+            {#each customFields
+            }
+        }
+                {
+            "alternativeIdentifier": {
+                {
+                    {format customField
+                    }
+                }
+            },
+            "id": {
+                {
+                    {format id
+                    }
+                }
+            },
+            "value": {
+                {
+                    {format value
+                    }
+                }
+            }
+                    {
+                {#hasAny values values
+                }
+            },
+            "values": [
+                {
+                    {#each values
+                    }
+                }
+                            {
+                    "internalValue": {
+                        {
+                            {format internalValue
+                            }
+                        }
+                    },
+                    "externalValue": {
+                        {
+                            {format externalValue
+                            }
+                        }
+                    },
+                    "value": {
+                        {
+                            {format value
+                            }
+                        }
+                    }
+                }{
+                    {#unless @last
+                    }
+                },
+                {
+                    {/unless
+                    }
+                }
+                        {
+                    {/each
+                    }
+                }
+            ]
+                    {
+                {/hasAny
+                }
+            }
+        }{
+            {#unless @last
+            }
+        },
+        {
+            {/unless
+            }
+        }
+            {
+            {/each
+            }
+        }
+    ],
+    "activityOriginList": {
+        {
+            {format (pipeToArray activityOriginList)
+            }
+        }
+    },
+    "taskActivities": [
+        {
+            {#each taskActivities
+            }
+        }
+                {
+            "alternativeIdentifier": {
+                {
+                    {format activity
+                    }
+                }
+            },
+            "id": {
+                {
+                    {format activityId
+                    }
+                }
+            }
+        }{
+            {#unless @last
+            }
+        },
+        {
+            {/unless
+            }
+        }
+            {
+            {/each
+            }
+        }
+    ],
+    "taskItems": [
+        {
+            {#each taskItems
+            }
+        }
+                {
+            "alternativeIdentifier": {
+                {
+                    {format item
+                    }
+                }
+            },
+            "id": {
+                {
+                    {format itemId
+                    }
+                }
+            },
+            "customFields": [
+                {
+                    {#each customFieldsItems
+                    }
+                }
+                            {
+                    "alternativeIdentifier": {
+                        {
+                            {format customField
+                            }
+                        }
+                    },
+                    "id": {
+                        {
+                            {format id
+                            }
+                        }
+                    },
+                    "value": {
+                        {
+                            {format value
+                            }
+                        }
+                    }
+                                {
+                        {#hasAny values values
+                        }
+                    },
+                    "values": [
+                        {
+                            {#each values
+                            }
+                        }
+                                        {
+                            "internalValue": {
+                                {
+                                    {format internalValue
+                                    }
+                                }
+                            },
+                            "externalValue": {
+                                {
+                                    {format externalValue
+                                    }
+                                }
+                            },
+                            "value": {
+                                {
+                                    {format value
+                                    }
+                                }
+                            }
+                        }{
+                            {#unless @last
+                            }
+                        },
+                        {
+                            {/unless
+                            }
+                        }
+                                    {
+                            {/each
+                            }
+                        }
+                    ]
+                                {
+                        {/hasAny
+                        }
+                    }
+                }{
+                    {#unless @last
+                    }
+                },
+                {
+                    {/unless
+                    }
+                }
+                        {
+                    {/each
+                    }
+                }
+            ]
+        }{
+            {#unless @last
+            }
+        },
+        {
+            {/unless
+            }
+        }
+            {
+            {/each
+            }
+        }
+    ]
+}

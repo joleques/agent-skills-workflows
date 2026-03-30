@@ -36,6 +36,10 @@ Este agente possui habilidades especializadas em:
 * `linkedin-poster`: Publicação de conteúdo no LinkedIn via Posts API — suporta posts de texto, imagem e artigos com link preview. API gratuita com permissão Open.
 * `social-media-psychology`: Psicologia de redes sociais e algoritmos de distribuição — orienta escrita e valida conteúdo para maximizar engajamento no LinkedIn e Instagram.
 * `mongodb-ops`: Conecta e realiza operações (CRUD e Aggregations) em bancos de dados MongoDB utilizando configurações de conexão salvas. Suporta queries JSON e auxílio na sua construção.
+* `product-interviewer`: Extrai conhecimento de produto do usuário via entrevista estruturada — nunca supõe, nunca inventa, apenas pergunta e registra.
+* `product-interviewer-revisor`: Revisa contexto extraído pela entrevista — identifica lacunas, ambiguidades e informações inventadas.
+* `product-context-aggregator`: Agrega artefatos extras do produto via symlinks e consolida com o contexto da Fase 1.
+* `product-documenter`: Gera documentação canônica de produto otimizada para Base de Conhecimento RAG de Agentes de IA.
 
 ## ✅ Checklist Pós-Implementação
 

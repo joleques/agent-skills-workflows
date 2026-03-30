@@ -28,4 +28,4 @@ Esta skill instrui o agente a atuar como **produtor de base de conhecimento** em
 - Para converter documentação técnica em formato RAG-ready
 - Para processar transcrições de áudio/reuniões em base de conhecimento
 - Para estruturar APIs/Swagger em documentos canônicos
-- Usado no workflow `/hermes` junto com a skill `documentador_revisor`
+- Usado no workflow `/doc-produto` (modo rápido) junto com a skill `documentador_revisor`

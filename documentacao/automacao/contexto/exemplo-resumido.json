@@ -1,0 +1,19 @@
+{
+    "context": "HISTORY",
+    "entityReference": "task",
+    "entityReferenceId": "taskAltId",
+    "url": "https://dese-api.umov.me/v2/task/alt-id/{{{format (referenceId content)}}}",
+    "action": "PARTIAL_UPDATE",
+    "fieldMappings": [
+        {
+            "originStrategy": "FIELD",
+            "name": "taskAltId",
+            "value": "6339308"
+        },
+        {
+            "originStrategy": "FIELD",
+            "name": "agent",
+            "value": "6368192"
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+# Eventos(momentos ou moment) disponiveis
+
+- 213: Ao executar uma Atividade
+- 215: Ao Aprovar Histórico
+- 218: Ao criar Local
+- 219: Ao editar Local
+- 220: Ao editar Tarefa
+- 221: Ao criar Tarefa
+- 222: Eventos Agendados
+- 223: Ao criar Dataset
+- 224: Ao editar Dataset
+- 225: Ao deletar Dataset
+- 226: Ao criar Item
+- 227: Ao editar Item
+- 228: Ao criar Agente
+- 229: Ao editar Agente
+- 230: Ao retronar tarefa de campo
+- 231: Ao processar um lote de itens com sucesso
+- 232: Ao enviar para campo a tarefa
+- 233: Ao aplicar Route Machine
+- 234: Ao executar Automação com sucesso
+- 235: Ao executar Automação com erro
+- 236: Ao enviar tarefas em lote (exclusiva dos Correios)
+- 237: Ao executar ação de escrita com gatilho p/ Automação
+- 238: Execução direta de automações (Automação chama Alfred diretamente)
+- 239: Ao finalizar qualquer processamento em lote (independente do status ou contexto)
+- 240: Ao finalizar processamento de lote com sucesso (independente do contexto)
+- 241: Ao finalizar processamento de lote com sucesso parcial (independente do contexto)
+- 242: Ao finalizar processamento de lote com erro (independente do contexto)
+- 243: Ao alterar pessoa responsável do local
+- 244: Ao alterar o status do local

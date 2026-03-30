@@ -1,0 +1,70 @@
+{
+    "action": {
+        "name": "Automação 2 de editar local",
+        "type": "CALLBACK",
+        "active": true
+    },
+    "event": {
+        "moment": 219,
+        "name": "test"
+    },
+    "automation": {
+        "context": "LOCAL",
+        "entityReference": "task",
+        "url": "https://webhook.site/6cf5b692-8787-46c2-8988-9e895e402437",
+        "advancedSettings": {
+            "alternativeIdentifier": {
+                "originStrategy": "CONTEXT_FIELD",
+                "name": "alternativeIdentifier",
+                "value": "serviceLocal.id"
+            }
+        },
+        "fieldMappings": [
+            {
+                "originStrategy": "CONSTANT",
+                "name": "active",
+                "value": true
+            },
+            {
+                "originStrategy": "CONSTANT",
+                "name": "situation",
+                "value": "30"
+            },
+            {
+                "originStrategy": "CONTEXT_FIELD",
+                "name": "serviceLocal",
+                "value": "serviceLocal.alternativeIdentifier"
+            },
+            {
+                "originStrategy": "CONTEXT_FIELD",
+                "name": "alternativeIdentifier",
+                "value": "serviceLocal.alternativeIdentifier"
+            },
+            {
+                "originStrategy": "SEARCH_CONNECTOR",
+                "name": "observation",
+                "value": "vendendor.nome"
+            },
+            {
+                "originStrategy": "CONSTANT",
+                "name": "agent",
+                "value": "jorge"
+            },
+            {
+                "originStrategy": "CONTEXT_FIELD",
+                "name": "initialDate",
+                "value": "{{{ currentDate }}}"
+            },
+            {
+                "originStrategy": "CONSTANT",
+                "name": "initialHour",
+                "value": "{{{ currentHour }}}"
+            },
+            {
+                "originStrategy": "CONSTANT",
+                "name": "activityOriginList",
+                "value": "3"
+            }
+        ]
+    }
+}

@@ -4,6 +4,7 @@
 /image
 /mongodb-ops
 /git-ops
+/documentacao
 
 # Migração AWS gerada pelo workflow /analise-migracao-aws
 /migracao-*

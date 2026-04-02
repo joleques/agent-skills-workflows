@@ -112,7 +112,27 @@ Se o Revisor não aprovou a documentação:
 
 ---
 
-### 5. Notificar Usuário
+### 5. Gerar Índice (`index.md`)
+
+Após o ciclo de revisão (aprovado ou entregue com ressalvas), gere o arquivo `index.md` seguindo as instruções da skill `api-documentador` (passo 6).
+
+O `index.md` deve:
+
+1. Listar **todos** os documentos de conteúdo gerados (excluir relatórios de revisão `*-revision-*.md`)
+2. Organizar por camada (Getting Started, Casos de Uso, Referência Técnica, Suporte)
+3. Incluir links relativos para cada documento
+4. Incluir mapa de navegação por persona
+5. Omitir seções de camadas não geradas (respeitar o tipo escolhido)
+
+Salvar em:
+
+```
+./doc-apis/{titulo}/index.md
+```
+
+---
+
+### 6. Notificar Usuário
 
 Use a tool `notify_user` para informar ao usuário:
 
@@ -123,6 +143,7 @@ Use a tool `notify_user` para informar ao usuário:
 
 📄 Diretório: ./doc-apis/{titulo}/
 📑 Documentos gerados: [lista de arquivos]
+📇 Índice: ./doc-apis/{titulo}/index.md
 🔄 Iterações: [número de iterações até aprovação]
 📂 Tipo: [tecnica / nao-tecnica / ambas]
 📝 Título: [titulo]
@@ -135,6 +156,7 @@ Use a tool `notify_user` para informar ao usuário:
 
 📄 Diretório: ./doc-apis/{titulo}/
 📑 Documentos gerados: [lista de arquivos]
+📇 Índice: ./doc-apis/{titulo}/index.md
 🔄 Iterações: 5 (limite atingido)
 📂 Tipo: [tecnica / nao-tecnica / ambas]
 📝 Título: [titulo]
@@ -180,8 +202,12 @@ Temos uma spec OpenAPI em ./docs/openapi.yaml
 > Revisando...
 > ✅ APROVADO
 >
+> Gerando índice...
+> ✅ index.md gerado
+>
 > 📄 Diretório: ./doc-apis/api-de-pedidos/
 > 📑 4 documentos gerados
+> 📇 Índice: ./doc-apis/api-de-pedidos/index.md
 > 🔄 Iterações: 2
 > 📂 Tipo: ambas
 ```

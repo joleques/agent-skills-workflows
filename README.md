@@ -2,7 +2,7 @@
 
 Repositório de **Skills** e **Workflows** para agentes de IA (como Gemini Code Assist, Antigravity e similares) que auxiliam desenvolvedores no dia a dia.
 
-Aqui você encontra **34 skills** e **5 workflows** prontos para uso que automatizam tarefas repetitivas, padronizam a criação de projetos, garantem qualidade de código, geram documentação RAG-ready, publicam conteúdo em redes sociais e aceleram o ciclo de desenvolvimento — tudo orquestrado por agentes inteligentes diretamente na sua IDE.
+Aqui você encontra **36 skills** e **6 workflows** prontos para uso que automatizam tarefas repetitivas, padronizam a criação de projetos, garantem qualidade de código, geram documentação RAG-ready, publicam conteúdo em redes sociais e aceleram o ciclo de desenvolvimento — tudo orquestrado por agentes inteligentes diretamente na sua IDE.
 
 ---
 
@@ -20,18 +20,20 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 
 ```
 .agent/
-├── skills/                            # 34 habilidades especializadas do agente
+├── skills/                            # 36 habilidades especializadas do agente
 │   ├── answers-questions/              # Responde perguntas com base em documentação
 │   ├── answers-questions-revisor/      # Revisão de QA para fine-tuning
 │   ├── api-documentador/              # Documentação de APIs em camadas (técnica/não-técnica)
 │   ├── api-documentador-revisor/      # Revisão de documentação de APIs
 │   ├── architectural-principles/       # Princípios arquiteturais
+│   ├── bounded-context-analyzer/      # Análise de domínio e linguagem ubíqua (DDD)
 │   ├── arquitetura/                    # Padrão de arquitetura proposta-arq
 │   ├── arquitetura-revisor/            # Revisão de conformidade arquitetural
 │   ├── dataset-synthesizer/            # Geração de datasets JSONL para fine-tuning
 │   ├── dataset-synthesizer-revisor/    # Revisão de datasets JSONL
 │   ├── design-patterns/                # Especialista pragmático em GoF
 │   ├── designer/                       # Design de conteúdo visual e estrutural
+│   ├── devcontainer-merger/            # Unificação de DevContainers de Bounded Context
 │   ├── devcontainer/                   # Configuração de Dev Containers
 │   ├── documentador/                   # Geração de docs para RAG
 │   ├── documentador_revisor/           # Validação de docs RAG
@@ -55,10 +57,11 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 │   ├── social-media-psychology/        # Psicologia de redes sociais e algoritmos de distribuição
 │   ├── software-principles/            # Princípios SOLID, OO, Pragmáticos
 │   └── software-principles-revisor/    # Revisão de aderência a princípios
-└── workflows/                         # 5 orquestrações multi-skill
+└── workflows/                         # 6 orquestrações multi-skill
     ├── doc-api.md                       # Documentação de APIs em camadas
     ├── doc-produto.md                   # Documentação de produto RAG-ready (absorve /hermes)
     ├── fine-tuning-gemini.md            # Pipeline de fine-tuning de LLMs
+    ├── init-bounded-context.md          # Inicialização de Bounded Context com análise DDD
     ├── init-project.md                  # Inicialização completa de projetos
     └── write-tech-article.md            # Produção de artigos técnicos
 ```
@@ -72,6 +75,7 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
 | `/doc-api` | Orquestra **api-documentador** e **api-documentador-revisor** para gerar documentação de APIs em camadas com ciclo de revisão automática (máx. 5x) |
 | `/doc-produto` | Orquestra **product-interviewer**, **product-interviewer-revisor**, **product-context-aggregator** e **product-documenter** para gerar documentação de produto RAG-ready. Suporta Modo Completo (entrevista + pipeline) e Modo Rápido (transformação de `.md` existentes). Absorve a funcionalidade do antigo `/hermes` |
 | `/fine-tuning-gemini` | Orquestra geração e revisão de datasets para **Fine-Tuning de LLMs**, em ciclo iterativo de curadoria (máx. 5x) |
+| `/init-bounded-context` | Mapeia serviços via symlinks, executa **bounded-context-analyzer** para extrair Linguagem Ubíqua e gerar `context.md`, e opcionalmente aciona **devcontainer-merger** para unificar ambientes de desenvolvimento |
 | `/init-project` | Inicializa um novo projeto executando skills de **Dev Container**, **Kubernetes** e opcionalmente **Go Initializer** |
 | `/write-tech-article` | Orquestra **Pesquisador**, **Escritor**, **Revisor** e **Designer** para pesquisar referências, produzir artigos técnicos com revisão automática (máx. 5 iterações) e gerar materiais visuais — tudo organizado em `artigos/{titulo}/` |
 
@@ -112,7 +116,7 @@ cp -r .agent/ /caminho/do/seu/projeto/
 
 1. Abra o projeto em uma IDE compatível (VS Code com Gemini Code Assist, Antigravity, etc.)
 2. O agente detectará automaticamente as skills disponíveis em `.agent/skills/`
-3. Use os comandos de slash (`/init-project`, `/doc-produto`, `/doc-api`) para acionar os workflows
+3. Use os comandos de slash (`/init-project`, `/init-bounded-context`, `/doc-produto`, `/doc-api`) para acionar os workflows
 
 ---
 

@@ -116,10 +116,69 @@ Salve os arquivos na seguinte estrutura:
 ```
 ./doc-apis/
 └── {titulo}/
+    ├── index.md                                 ← índice com links para todos os docs
     ├── {titulo}.md                              ← documento principal ou único
     ├── {titulo}-{contexto}-{dominio}.md         ← quando particionado
     └── ...
 ```
+
+### 6. Geração do Índice (`index.md`)
+
+**Obrigatório.** Após gerar todos os documentos, crie o `index.md` na raiz do diretório `./doc-apis/{titulo}/`.
+
+Este arquivo é o **ponto de entrada** da documentação — qualquer pessoa que acesse a pasta deve começar por aqui.
+
+#### Template do `index.md`
+
+```markdown
+# 📖 {Nome da API} — Documentação
+
+> {Descrição de negócio da API em uma frase}
+
+**Tipo:** {tecnica / nao-tecnica / ambas}
+**Data de Geração:** {YYYY-MM-DD}
+
+---
+
+## 📑 Índice de Documentos
+
+### 🟢 Getting Started
+
+- [{titulo}.md](./{titulo}.md) — Introdução, primeiros passos e ambientes
+
+### 🟡 Guias de Caso de Uso
+
+- [{titulo}-{contexto}-casos-de-uso.md](./{titulo}-{contexto}-casos-de-uso.md) — [Breve descrição]
+- [...]
+
+### 🔴 Referência Técnica
+
+- [{titulo}-{contexto}-tecnica.md](./{titulo}-{contexto}-tecnica.md) — [Breve descrição]
+- [...]
+
+### 📞 Suporte
+
+- [{titulo}-suporte.md](./{titulo}-suporte.md) — FAQ, ambientes e como reportar problemas
+
+---
+
+## 🗺️ Mapa de Navegação
+
+| Eu sou... | Eu quero... | Leia |
+|---|---|---|
+| Novo na API | Entender o que é e começar | [Getting Started](./{titulo}.md) |
+| Analista/Produto | Saber como fazer uma tarefa | [Casos de Uso](./{titulo}-casos-de-uso.md) |
+| Desenvolvedor | Ver contratos e schemas | [Referência Técnica](./{titulo}-tecnica.md) |
+| Suporte | Resolver um problema | [Suporte](./{titulo}-suporte.md) |
+```
+
+**Regras do `index.md`:**
+- ✅ Listar **todos** os documentos gerados com links relativos
+- ✅ Agrupar por camada (Getting Started, Casos de Uso, Referência Técnica, Suporte)
+- ✅ Incluir descrição breve de cada documento
+- ✅ Incluir mapa de navegação por persona
+- ✅ Incluir apenas camadas do tipo escolhido (omitir seções de camadas não geradas)
+- ❌ Não incluir documentos de revisão (`*-revision-*.md`) no índice
 
 ---
 
@@ -443,6 +502,7 @@ Ao reportar um problema, inclua:
 - [ ] Catálogo de erros com soluções práticas
 - [ ] FAQ com perguntas reais
 - [ ] Ambientes documentados
+- [ ] `index.md` gerado com links para todos os documentos
 
 ### Tipo `tecnica`
 
@@ -453,6 +513,7 @@ Ao reportar um problema, inclua:
 - [ ] Paginação documentada
 - [ ] Rate limiting documentado
 - [ ] Changelog com política de versionamento
+- [ ] `index.md` gerado com links para todos os documentos
 
 ### Tipo `ambas`
 
@@ -460,6 +521,7 @@ Ao reportar um problema, inclua:
 - [ ] Todos os itens de `tecnica`
 - [ ] Particionamento coerente (se aplicável)
 - [ ] Consistência entre camadas
+- [ ] `index.md` gerado com links para todos os documentos
 
 ---
 

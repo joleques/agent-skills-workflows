@@ -40,6 +40,8 @@ Este agente possui habilidades especializadas em:
 * `product-interviewer-revisor`: Revisa contexto extraído pela entrevista — identifica lacunas, ambiguidades e informações inventadas.
 * `product-context-aggregator`: Agrega artefatos extras do produto via symlinks e consolida com o contexto da Fase 1.
 * `product-documenter`: Gera documentação canônica de produto otimizada para Base de Conhecimento RAG de Agentes de IA.
+* `bounded-context-analyzer`: Analisa múltiplos serviços de um Bounded Context, extrai Linguagem Ubíqua, agregados e gera o `context.md` canônico.
+* `devcontainer-merger`: Unifica DevContainers de múltiplos serviços em um Root DevContainer — sem imagens inchadas, sem achismo.
 
 ## ✅ Checklist Pós-Implementação
 

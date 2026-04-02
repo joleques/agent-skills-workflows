@@ -143,6 +143,17 @@ Verifique se todas as camadas do tipo escolhido estão presentes e preenchidas.
 - ❌ Informação duplicada entre documentos
 - ❌ Informação perdida que deveria estar em algum documento
 
+**Verificar `index.md`:**
+- ✅ Arquivo `index.md` existe na raiz do diretório
+- ✅ Todos os documentos de conteúdo estão listados com links relativos
+- ✅ Documentos agrupados por camada (Getting Started, Casos de Uso, Ref. Técnica, Suporte)
+- ✅ Cada documento com descrição breve
+- ✅ Mapa de navegação por persona presente
+- ✅ Apenas camadas do tipo escolhido estão presentes (sem seções vazias)
+- ❌ Documentos de revisão (`*-revision-*.md`) incluídos no índice
+- ❌ Links quebrados ou apontando para documentos inexistentes
+- ❌ Ausência de `index.md`
+
 ---
 
 ### 9. Análise de Exemplos
@@ -181,6 +192,7 @@ Gere o relatório em `./doc-apis/{titulo}/{titulo}-revision-{versao}.md`:
 | Suporte | ✅/⚠️/❌ | X |
 | Consistência | ✅/⚠️/❌ | X |
 | Particionamento | ✅/⚠️/❌ | X |
+| Índice (`index.md`) | ✅/⚠️/❌ | X |
 | Exemplos | ✅/⚠️/❌ | X |
 
 ## Veredicto: ✅ APROVADO / ⚠️ AJUSTAR / ❌ REESCREVER

@@ -10,7 +10,7 @@ Aqui você encontra **36 skills** e **6 workflows** prontos para uso que automat
 
 Este repositório agora também inclui uma **squad operacional de engenharia de software** pronta para ser aplicada em projetos reais:
 
-- Diretório: [`squad-eng-software/`](squad-eng-software/README.md)
+- Diretório: [`squad-eng-software/`](squad-eng-software/)
 - Objetivo: executar demandas com governança explícita, gates técnicos e evidências de entrega
 - Tipos de demanda: `analise`, `bug`, `implementacao`
 - Fluxo: triagem → plano → implementação guiada por skills → revisões → auditoria final

@@ -6,6 +6,26 @@ Aqui você encontra **36 skills** e **6 workflows** prontos para uso que automat
 
 ---
 
+## 🧩 Nova Squad de Engenharia
+
+Este repositório agora também inclui uma **squad operacional de engenharia de software** pronta para ser aplicada em projetos reais:
+
+- Diretório: [`squad-eng-software/`](squad-eng-software/README.md)
+- Objetivo: executar demandas com governança explícita, gates técnicos e evidências de entrega
+- Tipos de demanda: `analise`, `bug`, `implementacao`
+- Fluxo: triagem → plano → implementação guiada por skills → revisões → auditoria final
+
+Principais diferenciais da squad:
+
+- `documentacao/project-context.md` como memória canônica do **projeto hospedeiro**
+- separação entre skills de implementação e skills de revisão
+- checklist e template de relatório final para reduzir subjetividade
+
+Se você quer usar o pacote completo de skills/workflows, siga com `.agent/`.
+Se você quer uma operação de engenharia mais controlada fim a fim, use `squad-eng-software/`.
+
+---
+
 ## 📦 O que são Skills?
 
 Skills são conjuntos de instruções, templates e scripts que estendem as capacidades de um agente de IA. Cada skill transforma o agente em um **especialista** em determinado assunto — seja criar pipelines CI/CD, configurar Kubernetes, revisar arquitetura ou gerar documentação pronta para RAG.
@@ -64,6 +84,15 @@ Cada skill possui seu próprio `SKILL.md` (instruções para o agente) e `README
     ├── init-bounded-context.md          # Inicialização de Bounded Context com análise DDD
     ├── init-project.md                  # Inicialização completa de projetos
     └── write-tech-article.md            # Produção de artigos técnicos
+
+squad-eng-software/
+├── AGENTS.md                            # Contrato operacional da squad
+├── README.md                            # Guia da squad
+├── .skills/                             # Skills usadas no fluxo da squad
+└── documentacao/
+    ├── project-context.md               # Contexto canônico do projeto hospedeiro
+    ├── matriz-demandas-e-gates.md       # Matriz de gates por tipo de demanda
+    └── template-relatorio-entrega.md    # Template de evidências finais
 ```
 
 ---

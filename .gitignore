@@ -11,3 +11,5 @@
 .agent/workflows/analise-migracao-aws.md
 .agent/skills/migration-analyzer/
 .agent/skills/migration-analyzer-revisor/
+.codex
+/analise

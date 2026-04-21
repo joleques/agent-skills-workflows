@@ -72,6 +72,10 @@ Especialistas condicionais por complexidade de design:
 - `grasp-patterns`
 - `design-patterns-specialist`
 
+## Diagrama do Fluxo
+
+![Diagrama do fluxo da squad](img/aquad.png)
+
 ## Gating obrigatório
 
 ### Antes
